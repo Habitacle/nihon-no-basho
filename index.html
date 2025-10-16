@@ -1,0 +1,690 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --side-bar-bg-color: #d9ede5;
+	--control-text-color: #6B6B6B;
+	--active-file-bg-color: #ecf6f2;
+	--active-file-border-color: #6B6B6B;
+	--active-file-text-color: #202020;
+	--table-even-row-color:#f8fcfa;
+	--table-head-color:#d9ede5;
+	--deep-theme-color: #4eb289;
+	--code-block-bg-color: #0F111A;
+}
+
+/*serif*/
+/*monospace*/
+/*Chinese*/
+html{
+	font-size: 16px;
+}
+
+body {
+  font-family: 'Lexend','Helvetica','SourceCodePro','NotoSansSC';
+	font-weight: normal;
+	line-height: 1.5rem;
+	letter-spacing: 0;
+  margin: 0;
+}
+
+#write {
+	max-width: 900px;
+  padding: 30px 50px 20px;
+}
+
+#write p{
+	text-align:left;
+}
+
+#write pre.md-meta-block {
+	padding: 1rem;
+	font-size: 85%;
+	line-height: 1.45;
+	background-color: #f7f7f7;
+	border: 0;
+	border-radius: 3px;
+	color: #777777;
+	margin-top: 0 !important;
+}
+
+.md-image>.md-meta {
+  color: #777777;
+  font-size: 0.9rem;
+	font-family: 'Lexend';
+  padding: 4px 0;
+}
+
+
+@media print {
+  html,body {
+    font-size: 14px;
+  }
+  
+  .md-fences {
+    line-height: 1.2rem;
+  }
+
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  pre {
+    word-wrap: break-word;
+  }
+  
+}
+@page {
+  size: A4; 
+  margin: 8mm 0mm;
+}
+
+/*toc*/
+.md-toc { 
+  margin-top:20px;
+  padding-bottom:20px;
+	color: var(--deep-theme-color);
+}
+
+a {
+	color: var(--deep-theme-color);
+	text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*headers*/
+h1,h2,h3,h4,h5,h6 {
+	display: block;
+	font-weight:bold;
+}
+
+h1 {
+	font-size: 1.8em;
+  line-height: 110%;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-top: 0.83em;
+	margin-bottom: 0.83em;
+}
+
+h3 {
+	font-size: 1.17em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+h4 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+}
+
+h5 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	color: #777777;
+}
+
+h6 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	color: #adadad;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+	margin: 0.5rem 0;
+}
+
+/*table*/
+table {
+	border-collapse: collapse;
+	padding: 0;
+  word-break: initial;
+	width: 100%;
+}
+
+table tr:nth-child(even){
+    background-color: var(--table-even-row-color);
+}
+
+thead{
+	background-color: var(--table-head-color);
+}
+
+table th{
+	text-align: center;
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+
+table td{
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+table tr{
+	padding:6px 13px;
+	border: 1px solid var(--table-head-color);
+}
+
+/*blockquote*/
+blockquote {
+	border-left: 0.2rem solid var(--side-bar-bg-color);
+	background-color: var(--table-even-row-color);
+	color: #777777;
+	font-family: 'Lexend','NotoSansSC';
+	font-size: 1rem;
+	padding-left: 2rem;
+}
+
+
+/*list*/
+
+li p.first {
+  display: inline-block;
+}
+ul,
+ol {
+  padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+.md-task-list-item:hover > input:before,
+input[type='checkbox']:hover:before {
+	opacity: 1;
+	transition: 0.5s;
+	background-color: var(--side-bar-bg-color);
+}
+
+.task-list-item input::before {
+  content: "";
+  display: inline-block;
+  border-radius: 1.1rem;
+  vertical-align: middle;
+  border: 1.2px solid var(--deep-theme-color);
+  background-color: #ffffff;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: -0.13rem;
+  margin-right: 0.1rem;
+  margin-top: -0.67rem;  
+}
+
+.task-list-item input:checked::before {
+  padding-left: 0.125em;
+  content: '✔';
+  color:white;
+  background-color: var(--deep-theme-color);
+  font-size: 0.8rem;
+  line-height: 0.95rem;
+  margin-left: -0.13rem;
+  margin-right: 0.1rem;
+  margin-top: -0.67rem; 
+  transition: background-color 200ms ease-in-out;
+}
+
+.task-list-done {
+    text-decoration: line-through;
+    color: #adadad;
+}
+
+hr {
+	border-style: none;
+  border-top-style: solid;
+  border-color: #e7e7e7;
+  border-width: 1px;
+	margin: 2rem 0;
+}
+
+/*highlight*/
+#write mark {
+	background-color: #c7ffe8;
+	border-radius: 2px;
+	color: black;
+	padding: 0 4px;
+	margin: 0 2px;
+}
+
+/*inline code*/
+#write code,tt {
+	padding: 0.6px 4px;
+	border-radius: 2px;
+	background-color: #f1f1f1;
+	font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
+	font-size: 0.9rem;
+	color: var(--code-block-bg-color);
+	margin: 0 2px;
+}
+
+/*footnote*/
+#write .md-footnote {
+	color: #777777;
+	background-color: #f7f7f7;
+}
+
+/*source code mode*/
+.cm-s-typora-default .cm-header {
+	color:var(--code-block-bg-color);
+}
+.cm-s-typora-default .cm-link {
+	color:var(--deep-theme-color);
+
+}
+
+
+/*code block*/
+#write .md-fences {
+  font-size: 1rem;
+  margin: 0.2em 0;
+  padding: 0.5em;
+  border-radius: 3px;
+	font-size: 0.9em;
+  font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
+  background-color: var(--code-block-bg-color);
+  color: #A9B7C6;
+  border: none;
+	text-shadow: none;
+}
+
+.md-fences .code-tooltip {
+	background-color: var(--code-block-bg-color);
+}
+
+/*
+  Name:       material-ocean
+  Author:     Mattia Astorino (http://github.com/equinusocio)
+  Website:    https://material-theme.site/
+*/
+
+.cm-s-inner.CodeMirror {
+  background-color: #0F111A;
+  color: #8F93A2;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background: #0F111A;
+  color: #464B5D;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-linenumber {color: #464B5D;}
+.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+
+/*
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #FFCC00;
+}
+.cm-s-inner.cm-fat-cursor .CodeMirror-cursor {
+  background-color: #FFCC00 !important;
+}
+.cm-s-inner .cm-animate-fat-cursor {
+  background-color: #FFCC00 !important;
+}
+*/
+
+.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-inner div.CodeMirror-cursor { border-left: 1px solid #ffffff; }
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
+}
+
+.cm-s-inner .CodeMirror-selected{ background: #214283 !important; }
+.cm-s-inner .CodeMirror-selectedtext { background: #214283 !important; }
+.cm-overlay.CodeMirror-selectedtext { background: #B5D6FC !important; }
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+  background: rgba(128, 203, 196, 0.2);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+  background: rgba(128, 203, 196, 0.2);
+}
+
+/* .cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0.5);
+} */
+
+.cm-s-inner .cm-keyword {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-operator {
+  color: #89DDFF;
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #EEFFFF;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-atom {
+  color: #F78C6C;
+}
+
+.cm-s-inner .cm-number {
+  color: #FF5370;
+}
+
+.cm-s-inner .cm-def {
+  color: #82AAFF;
+}
+
+.cm-s-inner .cm-string {
+  color: #C3E88D;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-comment {
+  color: #585d6d;
+}
+
+.cm-s-inner .cm-variable {
+  color: #f07178;
+}
+
+.cm-s-inner .cm-tag {
+  color: #FF5370;
+}
+
+.cm-s-inner .cm-meta {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-property {
+  color: #C792EA;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+  color: #DECB6B;
+}
+
+
+.cm-s-inner .cm-error {
+  color: rgba(255, 255, 255, 1.0);
+  background-color: #FF5370;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+
+
+
+
+</style><title>場所</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='東京'><span>東京</span></h1><h2 id='浅草あさくさ'><span>浅草（あさくさ）</span></h2><p><span>⛩️Sensoji Temple </span><a href='https://maps.app.goo.gl/dSt5LhH134Soc1eR7' target='_blank' class='url'>https://maps.app.goo.gl/dSt5LhH134Soc1eR7</a></p><p><span>🏬Asakusa Underground Street </span><a href='https://maps.app.goo.gl/sAd4pUwui87kjDhU6' target='_blank' class='url'>https://maps.app.goo.gl/sAd4pUwui87kjDhU6</a></p><ul><li><p><span>🍻Drive-in DenDen </span><a href='https://maps.app.goo.gl/K38QRFHRSFJCo4pG6' target='_blank' class='url'>https://maps.app.goo.gl/K38QRFHRSFJCo4pG6</a></p></li></ul><p><span>🏬Kappabashi Hondōri Shopping Street </span><a href='https://maps.app.goo.gl/LgLC41nASAGkNneZA' target='_blank' class='url'>https://maps.app.goo.gl/LgLC41nASAGkNneZA</a></p><ul><li><p><span>🔪Seisuke Knife </span><a href='https://maps.app.goo.gl/w5chX8oBWsxaJNim8' target='_blank' class='url'>https://maps.app.goo.gl/w5chX8oBWsxaJNim8</a></p></li><li><p><span>🔪Tojiro Knife </span><a href='https://maps.app.goo.gl/qzsm6Lo2fq4W3W7dA' target='_blank' class='url'>https://maps.app.goo.gl/qzsm6Lo2fq4W3W7dA</a></p></li></ul><h2 id='千代田ちよだ'><span>千代田（ちよだ）</span></h2><p><span>📚️Kanda-Jimbōchō Book Town </span><a href='https://maps.app.goo.gl/JGDWbEcRruXS2n2k9' target='_blank' class='url'>https://maps.app.goo.gl/JGDWbEcRruXS2n2k9</a></p><ul><li><p>☕️<span>Milonga Nueva </span><a href='https://maps.app.goo.gl/e9qRLtZFzenhx3EX7' target='_blank' class='url'>https://maps.app.goo.gl/e9qRLtZFzenhx3EX7</a></p></li><li><p>☕️<span>Koseto </span><a href='https://maps.app.goo.gl/wBkXXUuiKCYBVP5t6' target='_blank' class='url'>https://maps.app.goo.gl/wBkXXUuiKCYBVP5t6</a></p></li><li><p><span>🎷Jazz BIGBOY </span><a href='https://maps.app.goo.gl/gxo6bkyCkFi39EGf8' target='_blank' class='url'>https://maps.app.goo.gl/gxo6bkyCkFi39EGf8</a></p></li></ul><p><span>🏛️National Museum of Modern Art </span><a href='https://maps.app.goo.gl/5tTywqyvbBiVKXoi8' target='_blank' class='url'>https://maps.app.goo.gl/5tTywqyvbBiVKXoi8</a></p><h2 id='新宿しんじゅく'><span>新宿（しんじゅく）</span></h2><p><span>🏛️YAYOI KUSAMA Museum </span><a href='https://maps.app.goo.gl/tW74DHHHF5o4vW969' target='_blank' class='url'>https://maps.app.goo.gl/tW74DHHHF5o4vW969</a></p><p><span>🍻Shinjuku Golden-Gai </span><a href='https://maps.app.goo.gl/sG78EtgnndVQpZEC6' target='_blank' class='url'>https://maps.app.goo.gl/sG78EtgnndVQpZEC6</a></p><p><span>📷️Map Camera, Kitamura, Lemon-sha </span><a href='https://maps.app.goo.gl/VWk4MThbjyD1Z2oz5' target='_blank' class='url'>https://maps.app.goo.gl/VWk4MThbjyD1Z2oz5</a></p><p><span>💿️Tower Records Shinjuku </span><a href='https://maps.app.goo.gl/mgi8yGrbaDdXEcdM8' target='_blank' class='url'>https://maps.app.goo.gl/mgi8yGrbaDdXEcdM8</a></p><p>☕️<span>Coffee Seibu </span><a href='https://maps.app.goo.gl/xaqZz7X6MNh7c6x59' target='_blank' class='url'>https://maps.app.goo.gl/xaqZz7X6MNh7c6x59</a></p><h2 id='渋谷しぶや'><span>渋谷（しぶや）</span></h2><p><span>🗺️Shibuya Scramble Crossing </span><a href='https://maps.app.goo.gl/4ZDJ17XR6GPCfx5w7' target='_blank' class='url'>https://maps.app.goo.gl/4ZDJ17XR6GPCfx5w7</a></p><p><span>💿️Tower Records Shibuya </span><a href='https://maps.app.goo.gl/RJPcv1qtDhuBAyaQ7' target='_blank' class='url'>https://maps.app.goo.gl/RJPcv1qtDhuBAyaQ7</a></p><p><span>🏬MEGA Don Quijote </span><a href='https://maps.app.goo.gl/11KjrD42CpLD5BDm8' target='_blank' class='url'>https://maps.app.goo.gl/11KjrD42CpLD5BDm8</a></p><p><span>🏬MUJI </span><a href='https://maps.app.goo.gl/UCy2Je6vJvZJaPi6A' target='_blank' class='url'>https://maps.app.goo.gl/UCy2Je6vJvZJaPi6A</a></p><p><span>🎻Meikyoku Kissa Lion </span><a href='https://maps.app.goo.gl/fGii6mVzwqUTCk5F8' target='_blank' class='url'>https://maps.app.goo.gl/fGii6mVzwqUTCk5F8</a></p><p>☕️<span>Chatei Hatou </span><a href='https://maps.app.goo.gl/suZitRJt2d5bN1eD8' target='_blank' class='url'>https://maps.app.goo.gl/suZitRJt2d5bN1eD8</a></p><p><strong><span>原宿（はらじゅく）</span></strong></p><ul><li><p><span>🧥Sukajyan Dept. </span><a href='https://maps.app.goo.gl/vrCK1KU8uw1Lt2Tf8' target='_blank' class='url'>https://maps.app.goo.gl/vrCK1KU8uw1Lt2Tf8</a></p></li><li><p>☕️<span>Enseigne d&#39;angle Harajuku </span><a href='https://maps.app.goo.gl/mq4j4gyRh3adKGeP9' target='_blank' class='url'>https://maps.app.goo.gl/mq4j4gyRh3adKGeP9</a></p></li></ul><h2 id='中野なかの'><span>中野（なかの）</span></h2><p><span>🏬Nakano Broadway </span><a href='https://maps.app.goo.gl/Qz6CuQ7gw3KB6CJr8' target='_blank' class='url'>https://maps.app.goo.gl/Qz6CuQ7gw3KB6CJr8</a></p><ul><li><p><span>🎎Mandarake Nakano </span><a href='https://maps.app.goo.gl/ByPHTNLk57M3kh4K7' target='_blank' class='url'>https://maps.app.goo.gl/ByPHTNLk57M3kh4K7</a></p></li></ul><p><span>📷️Fujiya Camera </span><a href='https://maps.app.goo.gl/ZQLSdnL9Wxe5gbScA' target='_blank' class='url'>https://maps.app.goo.gl/ZQLSdnL9Wxe5gbScA</a></p><p><span>🍜Chūka-soba Aoba </span><a href='https://maps.app.goo.gl/HGjJPC3aCdf4t5BA7' target='_blank' class='url'>https://maps.app.goo.gl/HGjJPC3aCdf4t5BA7</a></p><p><span>🎷Rompercicci </span><a href='https://maps.app.goo.gl/JXSrrKrBRiCqcmBo6' target='_blank' class='url'>https://maps.app.goo.gl/JXSrrKrBRiCqcmBo6</a></p><h2 id='秋葉原あきはばら'><span>秋葉原（あきはばら）</span></h2><p><span>🏬Yodobashi Camera</span></p><p><span>🏬Kotobukiya</span></p><h2 id='銀座ぎんざ'><span>銀座（ぎんざ）</span></h2><p><span>🍜Ginza Tsukiya </span><a href='https://maps.app.goo.gl/TopdhGkPZCT1CyqM6' target='_blank' class='url'>https://maps.app.goo.gl/TopdhGkPZCT1CyqM6</a></p><p><span>🏬MUJI</span></p><p><span>📷️KATSUMIDO Camera</span></p><h2 id='上野うえの'><span>上野（うえの）</span></h2><p><span>🏛️Tokyo National Museum </span><a href='https://maps.app.goo.gl/GUW47aXAJGEi3DXo6' target='_blank' class='url'>https://maps.app.goo.gl/GUW47aXAJGEi3DXo6</a></p><p><span>🏞️Ueno Park</span></p><ul><li><p><span>🐼Ueno Zoo </span><a href='https://maps.app.goo.gl/jbjjfNcF3HouKgYk6' target='_blank' class='url'>https://maps.app.goo.gl/jbjjfNcF3HouKgYk6</a></p></li></ul><p><span>🥢Yakitori Torisho Honten </span><a href='https://maps.app.goo.gl/pjaFAcD2eQdBqkGG7' target='_blank' class='url'>https://maps.app.goo.gl/pjaFAcD2eQdBqkGG7</a></p><h2 id='江東こうとう'><span>江東（こうとう）</span></h2><p><span>🏛️Museum of Contemporary Art Tokyo </span><a href='https://maps.app.goo.gl/rcbD3vBp1xrniDZc7' target='_blank' class='url'>https://maps.app.goo.gl/rcbD3vBp1xrniDZc7</a></p><h2 id='港区みなと'><span>港区（みなと）</span></h2><p><span>🏛️Odaiba Retro Museum </span><a href='https://maps.app.goo.gl/VcdjXLeiN5VpNAoB6' target='_blank' class='url'>https://maps.app.goo.gl/VcdjXLeiN5VpNAoB6</a></p><h2 id='品川しながわ'><span>品川（しながわ）</span></h2><p><span>🏬Tokyo City Flea Market</span></p><h2 id='江戸川えどがわ'><span>江戸川（えどがわ）</span></h2><p><span>🐧Tokyo Sea Life Park </span><a href='https://maps.app.goo.gl/Yrdb7YkhewixUufq9' target='_blank' class='url'>https://maps.app.goo.gl/Yrdb7YkhewixUufq9</a></p><h2 id='千葉ちば'><span>千葉（ちば）</span></h2><p><span>🎡Tokyo Disneyland </span><a href='https://maps.app.goo.gl/Az1GKAyKBgAMGxQf6' target='_blank' class='url'>https://maps.app.goo.gl/Az1GKAyKBgAMGxQf6</a></p><hr /><h1 id='東京の近く'><span>東京の近く</span></h1><h2 id='日光にっこう'><span>日光（にっこう）</span></h2><p><span>⛩️Nikkō Tōshogū </span><a href='https://maps.app.goo.gl/yCYhSZSSBujzchFQ6' target='_blank' class='url'>https://maps.app.goo.gl/yCYhSZSSBujzchFQ6</a></p><p><span>🏞️Kegon Waterfalls </span><a href='https://maps.app.goo.gl/toCfBiZBs7MBm3Cx6' target='_blank' class='url'>https://maps.app.goo.gl/toCfBiZBs7MBm3Cx6</a></p><hr /><h1 id='京都'><span>京都</span></h1><h2 id='中京なかぎょう'><span>中京（なかぎょう）</span></h2><p><span>🏛️The Museum of Kyoto </span><a href='https://maps.app.goo.gl/EHFQ7vMbZy8Yvkau7' target='_blank' class='url'>https://maps.app.goo.gl/EHFQ7vMbZy8Yvkau7</a></p><p><span>🏛️Kyoto International Manga Museum </span><a href='https://maps.app.goo.gl/HGBHzAso57QnVkqz9' target='_blank' class='url'>https://maps.app.goo.gl/HGBHzAso57QnVkqz9</a></p><p><span>🏬Nishiki Market </span><a href='https://maps.app.goo.gl/RKWxRS6aNKcqXFVs8' target='_blank' class='url'>https://maps.app.goo.gl/RKWxRS6aNKcqXFVs8</a></p><p><span>🛣️Pontocho Alley </span><a href='https://maps.app.goo.gl/agpP7Kc7nBAcC9A47' target='_blank' class='url'>https://maps.app.goo.gl/agpP7Kc7nBAcC9A47</a></p><ul><li><p><span>🥩Yakiniku Hiro </span><a href='https://maps.app.goo.gl/anwBe6nLGqrMDiFG9' target='_blank' class='url'>https://maps.app.goo.gl/anwBe6nLGqrMDiFG9</a></p></li></ul><p><span>👘Harajuku Chicago </span><a href='https://maps.app.goo.gl/fp9CwKb4RWA3ug729' target='_blank' class='url'>https://maps.app.goo.gl/fp9CwKb4RWA3ug729</a></p><p><span>👘Mimuro </span><a href='https://maps.app.goo.gl/GCjf9otvCA5jbQkz9' target='_blank' class='url'>https://maps.app.goo.gl/GCjf9otvCA5jbQkz9</a></p><p><span>🥩Steak &amp; Wine </span><a href='https://maps.app.goo.gl/Ck2n3vMbBNryeMBm7' target='_blank' class='url'>https://maps.app.goo.gl/Ck2n3vMbBNryeMBm7</a></p><p><span>🍜Ramen Sen-no-Kaze </span><a href='https://maps.app.goo.gl/t8ePWUL4UTZ58MT9A' target='_blank' class='url'>https://maps.app.goo.gl/t8ePWUL4UTZ58MT9A</a></p><h2 id='東山区ひがしやま'><span>東山区（ひがしやま）</span></h2><p><span>🛣️Hanami-koji Street </span><a href='https://maps.app.goo.gl/VNmYbhnxEjyzvgmW9' target='_blank' class='url'>https://maps.app.goo.gl/VNmYbhnxEjyzvgmW9</a></p><p><span>⛩️Yasaka Shrine </span><a href='https://maps.app.goo.gl/Qfj3HWwQD6PbqPt98' target='_blank' class='url'>https://maps.app.goo.gl/Qfj3HWwQD6PbqPt98</a></p><p><span>🏛️Gion Kagai Art Museum </span><a href='https://maps.app.goo.gl/MYsV5GFLVNL1vbUx9' target='_blank' class='url'>https://maps.app.goo.gl/MYsV5GFLVNL1vbUx9</a></p><p>☕️<span>🍡Kagizen Yoshifusa Kodaiji </span><a href='https://maps.app.goo.gl/8fLtauFwXato3NdU9' target='_blank' class='url'>https://maps.app.goo.gl/8fLtauFwXato3NdU9</a></p><p>☕️<span>🍡Kagizen Yoshifusa Shijo (Main) </span><a href='https://maps.app.goo.gl/Af7HdQGLR95mZzoZA' target='_blank' class='url'>https://maps.app.goo.gl/Af7HdQGLR95mZzoZA</a></p><p><span>🏯Hōkan-ji (Yasaka Pagoda) </span><a href='https://maps.app.goo.gl/iR9hSNbsKQTbCavTA' target='_blank' class='url'>https://maps.app.goo.gl/iR9hSNbsKQTbCavTA</a></p><p><span>🛣️Ninenzaka </span><a href='https://maps.app.goo.gl/CLgL1wgPu3SjQQgs5' target='_blank' class='url'>https://maps.app.goo.gl/CLgL1wgPu3SjQQgs5</a></p><p><span>🛣️Sannenzaka </span><a href='https://maps.app.goo.gl/aqvNBzirZxaLR3AZ9' target='_blank' class='url'>https://maps.app.goo.gl/aqvNBzirZxaLR3AZ9</a></p><p><span>🏯Kiyomizudera </span><a href='https://maps.app.goo.gl/VRWze3kdRXUA8Fyt6' target='_blank' class='url'>https://maps.app.goo.gl/VRWze3kdRXUA8Fyt6</a></p><h2 id='左京さきょう'><span>左京（さきょう）</span></h2><p><span>🏯Nanzenji Temple </span><a href='https://maps.app.goo.gl/hC2YBd2XFZBTAidv7' target='_blank' class='url'>https://maps.app.goo.gl/hC2YBd2XFZBTAidv7</a></p><p><span>🏯Eikando Temple </span><a href='https://maps.app.goo.gl/2Mp1bZkWxDSQ1GHQ6' target='_blank' class='url'>https://maps.app.goo.gl/2Mp1bZkWxDSQ1GHQ6</a></p><p><span>⛩️🐇Okazaki Shrine </span><a href='https://maps.app.goo.gl/iAKzv85U9CLX6ihr5' target='_blank' class='url'>https://maps.app.goo.gl/iAKzv85U9CLX6ihr5</a></p><h2 id='嵐山あらしやま'><span>嵐山（あらしやま）</span></h2><p><span>🌲Arashiyama Bamboo Forest </span><a href='https://maps.app.goo.gl/YGCLSotjCDBB8rwp8' target='_blank' class='url'>https://maps.app.goo.gl/YGCLSotjCDBB8rwp8</a></p><p><span>🏯Tenryuji </span><a href='https://maps.app.goo.gl/q8N99KniSFHCzmiB6' target='_blank' class='url'>https://maps.app.goo.gl/q8N99KniSFHCzmiB6</a></p><p><span>🏯Daihikaku Senkō-ji </span><a href='https://maps.app.goo.gl/MtDrSkjpWo4oojf89' target='_blank' class='url'>https://maps.app.goo.gl/MtDrSkjpWo4oojf89</a></p><p><span>🏞️Iwatayama Monkey Park </span><a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6' target='_blank' class='url'>https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6</a></p><p><span>🛤️Sagano Romantic Train </span><a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6' target='_blank' class='url'>https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6</a></p><p><span>⛵️Hozugawa River Boat Ride </span><a href='https://maps.app.goo.gl/rPwk1cme9hrr5fCQ7' target='_blank' class='url'>https://maps.app.goo.gl/rPwk1cme9hrr5fCQ7</a></p><h2 id='northwest'><span>Northwest</span></h2><p><span>🏯Kinkakuji </span><a href='https://maps.app.goo.gl/oY3Z83m11VsYqpSd8' target='_blank' class='url'>https://maps.app.goo.gl/oY3Z83m11VsYqpSd8</a></p><p><span>🌲Kurama to Kibune Hike (2-3 hs) </span><a href='https://maps.app.goo.gl/udEXsaEYhZPXCYav5' target='_blank' class='url'>https://maps.app.goo.gl/udEXsaEYhZPXCYav5</a></p><ul><li><p><span>🚉Kibuneguchi Station </span><a href='https://maps.app.goo.gl/GfrFPJ81Ag22sLKX6' target='_blank' class='url'>https://maps.app.goo.gl/GfrFPJ81Ag22sLKX6</a></p></li></ul><h2 id='south'><span>South</span></h2><p><span>⛩️Fushimi Inari </span><a href='https://maps.app.goo.gl/PVyhyuG3ZHxiZTML8' target='_blank' class='url'>https://maps.app.goo.gl/PVyhyuG3ZHxiZTML8</a></p><hr /><h1 id='大阪'><span>大阪</span></h1><h2 id='中央ちゅうおう'><span>中央（ちゅうおう）</span></h2><p><span>🏯Osaka Castle </span><a href='https://maps.app.goo.gl/ETgWfQ2CqoTysCvd6' target='_blank' class='url'>https://maps.app.goo.gl/ETgWfQ2CqoTysCvd6</a></p><p><span>🎎Torejaras </span><a href='https://maps.app.goo.gl/yhJxgWkUm2v8V9sF6' target='_blank' class='url'>https://maps.app.goo.gl/yhJxgWkUm2v8V9sF6</a></p><p><span>🐉Donguri Kyowakoku (Ghibli Store) Namba </span><a href='https://maps.app.goo.gl/WtPKuXRnnjYBRfkNA' target='_blank' class='url'>https://maps.app.goo.gl/WtPKuXRnnjYBRfkNA</a></p><p><span>🏬PLAZA Shinsaibashi PARCO Store </span><a href='https://maps.app.goo.gl/YV7CqS8rSeGF2aTy7' target='_blank' class='url'>https://maps.app.goo.gl/YV7CqS8rSeGF2aTy7</a></p><ul><li><p><span>🐉Donguri Kyowakoku (Ghibli Store) </span><a href='https://maps.app.goo.gl/VUEKFBkGSkSUNSgh9' target='_blank' class='url'>https://maps.app.goo.gl/VUEKFBkGSkSUNSgh9</a></p></li></ul><p><span>🛣️Sennichimae Doguyasuji Shopping Street for cookware </span><a href='https://maps.app.goo.gl/KCGFDaJigrYJ7s817' target='_blank' class='url'>https://maps.app.goo.gl/KCGFDaJigrYJ7s817</a></p><h2 id='北区きたく'><span>北区（きたく）</span></h2><p><span>🎻The Symphony Hall </span><a href='https://maps.app.goo.gl/khgsuf4s6ahevXSAA' target='_blank' class='url'>https://maps.app.goo.gl/khgsuf4s6ahevXSAA</a></p><p><span>🐉Donguri Kyowakoku (Ghibli Store) </span><a href='https://maps.app.goo.gl/a8NUCjg8YUWoazSN6' target='_blank' class='url'>https://maps.app.goo.gl/a8NUCjg8YUWoazSN6</a></p><p><span>👕Kinji Used Clothing </span><a href='https://maps.app.goo.gl/QfyL8GfGKnnuMgh4A' target='_blank' class='url'>https://maps.app.goo.gl/QfyL8GfGKnnuMgh4A</a></p><h2 id='north'><span>North</span></h2><p><span>🏛️The Osamu Tezuka Manga Museum </span><a href='https://maps.app.goo.gl/h6iR9CyxNTWmpLoDA' target='_blank' class='url'>https://maps.app.goo.gl/h6iR9CyxNTWmpLoDA</a></p><p><span>🏛️Cup Noodles Museum Osaka Ikeda </span><a href='https://maps.app.goo.gl/ppJCY6rNGEob6AKa6' target='_blank' class='url'>https://maps.app.goo.gl/ppJCY6rNGEob6AKa6</a></p><hr /><h1 id='大阪の近く'><span>大阪の近く</span></h1><h2 id='奈良なら'><span>奈良（なら）</span></h2><p><span>🏞️🦌Nara Park </span><a href='https://maps.app.goo.gl/oQnj8FTKGiriZUtq9' target='_blank' class='url'>https://maps.app.goo.gl/oQnj8FTKGiriZUtq9</a></p><hr /><h1 id='名古屋なごや'><span>名古屋（なごや）</span></h1><p><span>🎡Ghibli Park </span><a href='https://maps.app.goo.gl/awbyRNjhjCER369r9' target='_blank' class='url'>https://maps.app.goo.gl/awbyRNjhjCER369r9</a></p><p><span>🏯Nagoya Castle </span><a href='https://maps.app.goo.gl/fgXjx8yvvgfKwgUm7' target='_blank' class='url'>https://maps.app.goo.gl/fgXjx8yvvgfKwgUm7</a></p><p><span>🏛️Nagoya City Art Museum </span><a href='https://maps.app.goo.gl/E18W9MTM2BAxUm1L9' target='_blank' class='url'>https://maps.app.goo.gl/E18W9MTM2BAxUm1L9</a></p><p><span>🛣️Osu Shotengai Shopping Street </span><a href='https://maps.app.goo.gl/LJ6TH1BEHkGF2BPLA' target='_blank' class='url'>https://maps.app.goo.gl/LJ6TH1BEHkGF2BPLA</a></p><p><span>🏞️Yōkisō </span><a href='https://maps.app.goo.gl/TsWtMGMB6sWsixZJA' target='_blank' class='url'>https://maps.app.goo.gl/TsWtMGMB6sWsixZJA</a></p><p><span>🏯Nittai-ji </span><a href='https://maps.app.goo.gl/ALaHydTjyZTNDGXp8' target='_blank' class='url'>https://maps.app.goo.gl/ALaHydTjyZTNDGXp8</a></p><p><span> </span></p></div></div>
+</body>
+</html>
