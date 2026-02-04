@@ -2,689 +2,312 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
-.mac-os-11 { --title-bar-height: 28px; }
-html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-h1, h2, h3, h4, h5 { white-space: pre-wrap; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
-iframe { margin: auto; }
-a.url { word-break: break-all; }
-a:active, a:hover { outline: 0px; }
-.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
-#write.first-line-indent p { text-indent: 2em; }
-#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
-#write.first-line-indent li { margin-left: 2em; }
-.for-image #write { padding-left: 8px; padding-right: 8px; }
-body.typora-export { padding-left: 30px; padding-right: 30px; }
-.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
-.typora-export .task-list-item input { pointer-events: none; }
-@media screen and (max-width: 500px) {
-  body.typora-export { padding-left: 0px; padding-right: 0px; }
-  #write { padding-left: 20px; padding-right: 20px; }
-}
-#write li > figure:last-child { margin-bottom: 0.5rem; }
-#write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
-button, input, select, textarea { color: inherit; font: inherit; }
-input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
-*, ::after, ::before { box-sizing: border-box; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
-#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
-p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
-p { orphans: 4; }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.8rem; }
-h3 { font-size: 1.6rem; }
-h4 { font-size: 1.4rem; }
-h5 { font-size: 1.2rem; }
-h6 { font-size: 1rem; }
-.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
-.hidden { display: none; }
-.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
-a { cursor: pointer; }
-sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
-sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
-#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
-figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px; }
-thead, tr { break-inside: avoid; break-after: auto; }
-thead { display: table-header-group; }
-table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
-table.md-table td { min-width: 32px; }
-.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
-.CodeMirror-linenumber { user-select: none; }
-.CodeMirror { text-align: left; }
-.CodeMirror-placeholder { opacity: 0.3; }
-.CodeMirror pre { padding: 0px 4px; }
-.CodeMirror-lines { padding: 0px; }
-div.hr:focus { cursor: none; }
-#write pre { white-space: pre-wrap; }
-#write.fences-no-line-wrapping pre { white-space: pre; }
-#write pre.ty-contain-cm { white-space: normal; }
-.CodeMirror-gutters { margin-right: 4px; }
-.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
-#write .md-fences.mock-cm { white-space: pre-wrap; }
-.md-fences.md-fences-with-lineno { padding-left: 0px; }
-#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
-.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
-.CodeMirror-line, twitterwidget { break-inside: avoid; }
-svg { break-inside: avoid; }
-.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
-.footnotes + .footnotes { margin-top: 0px; }
-.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
-li div { padding-top: 0px; }
-blockquote { margin: 1rem 0px; }
-li .mathjax-block, li p { margin: 0.5rem 0px; }
-li blockquote { margin: 1rem 0px; }
-li { margin: 0px; position: relative; }
-blockquote > :last-child { margin-bottom: 0px; }
-blockquote > :first-child, li > :first-child { margin-top: 0px; }
-.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
-#write .footnote-line { white-space: pre-wrap; }
-@media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
-  .typora-export * { -webkit-print-color-adjust: exact; }
-  .typora-export #write { break-after: avoid; }
-  .typora-export #write::after { height: 0px; }
-  .is-mac table { break-inside: avoid; }
-  #write > p:nth-child(1) { margin-top: 0px; }
-  .typora-export-show-outline .typora-export-sidebar { display: none; }
-  figure { overflow-x: visible; }
-}
-.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
-a img, img a { cursor: pointer; }
-pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
-p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
-#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
-p > .md-image:only-child { display: inline-block; width: 100%; }
-#write .MathJax_Display { margin: 0.8em 0px 0px; }
-.md-math-block { width: 100%; }
-.md-math-block:not(:empty)::after { display: none; }
-.MathJax_ref { fill: currentcolor; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
-.md-task-list-item { position: relative; list-style-type: none; }
-.task-list-item.md-task-list-item { padding-left: 0px; }
-.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
-.math { font-size: 1rem; }
-.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
-.md-toc-content { position: relative; margin-left: 0px; }
-.md-toc-content::after, .md-toc::after { display: none; }
-.md-toc-item { display: block; color: rgb(65, 131, 196); }
-.md-toc-item a { text-decoration: none; }
-.md-toc-inner:hover { text-decoration: underline; }
-.md-toc-inner { display: inline-block; cursor: pointer; }
-.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
-.md-toc-h2 .md-toc-inner { margin-left: 2em; }
-.md-toc-h3 .md-toc-inner { margin-left: 4em; }
-.md-toc-h4 .md-toc-inner { margin-left: 6em; }
-.md-toc-h5 .md-toc-inner { margin-left: 8em; }
-.md-toc-h6 .md-toc-inner { margin-left: 10em; }
-@media screen and (max-width: 48em) {
-  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
-  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
-  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
-  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
-}
-a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
-.footnote-line a:not(.reversefootnote) { color: inherit; }
-.reversefootnote { font-family: ui-monospace, sans-serif; }
-.md-attr { display: none; }
-.md-fn-count::after { content: "."; }
-code, pre, samp, tt { font-family: var(--monospace); }
-kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
-code { text-align: left; vertical-align: initial; }
-a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
-.md-diagram-panel > svg { max-width: 100%; }
-[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
-[lang="mermaid"] .node text { font-size: 1rem; }
-table tr th { border-bottom: 0px; }
-video { max-width: 100%; display: block; margin: 0px auto; }
-iframe { max-width: 100%; width: 100%; border: none; }
-.highlight td, .highlight tr { border: 0px; }
-mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
-.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
-.md-expand mark .md-meta { opacity: 0.3 !important; }
-mark .md-meta { color: rgb(0, 0, 0); }
-@media print {
-  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
-}
-.md-diagram-panel .messageText { stroke: none !important; }
-.md-diagram-panel .start-state { fill: var(--node-fill); }
-.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
-.md-fences.md-fences-math { font-size: 1em; }
-.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
-.md-fences-advanced:not(.md-focus) { background: inherit; }
-.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
-.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
-.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
-.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
-@media screen and (max-width: 1024px) {
-  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
-}
-@media screen and (max-width: 800px) {
-  .typora-export-sidebar { display: none; }
-}
-.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
-.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
-.outline-content strong { font-weight: 400; }
-.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
-.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
-.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
-.outline-expander:hover::before { content: ""; }
-.outline-h1 > .outline-item { padding-left: 0px; }
-.outline-h2 > .outline-item { padding-left: 1em; }
-.outline-h3 > .outline-item { padding-left: 2em; }
-.outline-h4 > .outline-item { padding-left: 3em; }
-.outline-h5 > .outline-item { padding-left: 4em; }
-.outline-h6 > .outline-item { padding-left: 5em; }
-.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
-.outline-label:hover { text-decoration: underline; }
-.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
-.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
-.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
-.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
-.outline-children { display: none; }
-.info-panel-tab-wrapper { display: none; }
-.outline-item-open > .outline-children { display: block; }
-.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
-.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
-.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
-.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
-.typora-export-collapse-outline .outline-children { display: none; }
-.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
-.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
-.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
-.md-inline-math-container mjx-container { zoom: 0.95; }
-mjx-container { break-inside: avoid; }
-.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
-.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
-.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
-.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
-.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
-.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
-.md-alert-text-note { color: rgb(9, 105, 218); }
-.md-alert-text-important { color: rgb(130, 80, 223); }
-.md-alert-text-warning { color: rgb(154, 103, 0); }
-.md-alert-text-tip { color: rgb(31, 136, 61); }
-.md-alert-text-caution { color: rgb(207, 34, 46); }
-.md-alert-text { font-size: 0.9rem; font-weight: 700; }
-.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
-.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
-
-
-:root {
-    --side-bar-bg-color: #d9ede5;
-	--control-text-color: #6B6B6B;
-	--active-file-bg-color: #ecf6f2;
-	--active-file-border-color: #6B6B6B;
-	--active-file-text-color: #202020;
-	--table-even-row-color:#f8fcfa;
-	--table-head-color:#d9ede5;
-	--deep-theme-color: #4eb289;
-	--code-block-bg-color: #0F111A;
-}
-
-/*serif*/
-/*monospace*/
-/*Chinese*/
-html{
-	font-size: 16px;
-}
-
-body {
-  font-family: 'Lexend','Helvetica','SourceCodePro','NotoSansSC';
-	font-weight: normal;
-	line-height: 1.5rem;
-	letter-spacing: 0;
-  margin: 0;
-}
-
-#write {
-	max-width: 900px;
-  padding: 30px 50px 20px;
-}
-
-#write p{
-	text-align:left;
-}
-
-#write pre.md-meta-block {
-	padding: 1rem;
-	font-size: 85%;
-	line-height: 1.45;
-	background-color: #f7f7f7;
-	border: 0;
-	border-radius: 3px;
-	color: #777777;
-	margin-top: 0 !important;
-}
-
-.md-image>.md-meta {
-  color: #777777;
-  font-size: 0.9rem;
-	font-family: 'Lexend';
-  padding: 4px 0;
-}
-
-
-@media print {
-  html,body {
-    font-size: 14px;
-  }
-  
-  .md-fences {
-    line-height: 1.2rem;
-  }
-
-
-  table,
-  pre {
-    page-break-inside: avoid;
-  }
-
-  pre {
-    word-wrap: break-word;
-  }
-  
-}
-@page {
-  size: A4; 
-  margin: 8mm 0mm;
-}
-
-/*toc*/
-.md-toc { 
-  margin-top:20px;
-  padding-bottom:20px;
-	color: var(--deep-theme-color);
-}
-
-a {
-	color: var(--deep-theme-color);
-	text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/*headers*/
-h1,h2,h3,h4,h5,h6 {
-	display: block;
-	font-weight:bold;
-}
-
-h1 {
-	font-size: 1.8em;
-  line-height: 110%;
-	margin-top: 0.67em;
-	margin-bottom: 0.67em;
-}
-
-h2 {
-	font-size: 1.5em;
-	margin-top: 0.83em;
-	margin-bottom: 0.83em;
-}
-
-h3 {
-	font-size: 1.17em;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-h4 {
-	font-size: 1em;
-	margin-top: 1.33em;
-	margin-bottom: 1.33em;
-}
-
-h5 {
-	font-size: 1em;
-	margin-top: 1.33em;
-	margin-bottom: 1.33em;
-	color: #777777;
-}
-
-h6 {
-	font-size: 1em;
-	margin-top: 1.33em;
-	margin-bottom: 1.33em;
-	color: #adadad;
-}
-
-p,
-blockquote,
-ul,
-ol,
-dl,
-table {
-	margin: 0.5rem 0;
-}
-
-/*table*/
-table {
-	border-collapse: collapse;
-	padding: 0;
-  word-break: initial;
-	width: 100%;
-}
-
-table tr:nth-child(even){
-    background-color: var(--table-even-row-color);
-}
-
-thead{
-	background-color: var(--table-head-color);
-}
-
-table th{
-	text-align: center;
-	padding:6px 13px;
-	border: 1px solid var(--table-head-color);
-}
-
-table td{
-	padding:6px 13px;
-	border: 1px solid var(--table-head-color);
-}
-table tr{
-	padding:6px 13px;
-	border: 1px solid var(--table-head-color);
-}
-
-/*blockquote*/
-blockquote {
-	border-left: 0.2rem solid var(--side-bar-bg-color);
-	background-color: var(--table-even-row-color);
-	color: #777777;
-	font-family: 'Lexend','NotoSansSC';
-	font-size: 1rem;
-	padding-left: 2rem;
-}
-
-
-/*list*/
-
-li p.first {
-  display: inline-block;
-}
-ul,
-ol {
-  padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-  margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-  margin-bottom: 0;
-}
-
-.md-task-list-item:hover > input:before,
-input[type='checkbox']:hover:before {
-	opacity: 1;
-	transition: 0.5s;
-	background-color: var(--side-bar-bg-color);
-}
-
-.task-list-item input::before {
-  content: "";
-  display: inline-block;
-  border-radius: 1.1rem;
-  vertical-align: middle;
-  border: 1.2px solid var(--deep-theme-color);
-  background-color: #ffffff;
-  width: 1.1rem;
-  height: 1.1rem;
-  margin-left: -0.13rem;
-  margin-right: 0.1rem;
-  margin-top: -0.67rem;  
-}
-
-.task-list-item input:checked::before {
-  padding-left: 0.125em;
-  content: '✔';
-  color:white;
-  background-color: var(--deep-theme-color);
-  font-size: 0.8rem;
-  line-height: 0.95rem;
-  margin-left: -0.13rem;
-  margin-right: 0.1rem;
-  margin-top: -0.67rem; 
-  transition: background-color 200ms ease-in-out;
-}
-
-.task-list-done {
-    text-decoration: line-through;
-    color: #adadad;
-}
-
-hr {
-	border-style: none;
-  border-top-style: solid;
-  border-color: #e7e7e7;
-  border-width: 1px;
-	margin: 2rem 0;
-}
-
-/*highlight*/
-#write mark {
-	background-color: #c7ffe8;
-	border-radius: 2px;
-	color: black;
-	padding: 0 4px;
-	margin: 0 2px;
-}
-
-/*inline code*/
-#write code,tt {
-	padding: 0.6px 4px;
-	border-radius: 2px;
-	background-color: #f1f1f1;
-	font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
-	font-size: 0.9rem;
-	color: var(--code-block-bg-color);
-	margin: 0 2px;
-}
-
-/*footnote*/
-#write .md-footnote {
-	color: #777777;
-	background-color: #f7f7f7;
-}
-
-/*source code mode*/
-.cm-s-typora-default .cm-header {
-	color:var(--code-block-bg-color);
-}
-.cm-s-typora-default .cm-link {
-	color:var(--deep-theme-color);
-
-}
-
-
-/*code block*/
-#write .md-fences {
-  font-size: 1rem;
-  margin: 0.2em 0;
-  padding: 0.5em;
-  border-radius: 3px;
-	font-size: 0.9em;
-  font-family: 'SourceCodePro',Consolas,Courier,'NotoSansSC';
-  background-color: var(--code-block-bg-color);
-  color: #A9B7C6;
-  border: none;
-	text-shadow: none;
-}
-
-.md-fences .code-tooltip {
-	background-color: var(--code-block-bg-color);
-}
-
-/*
-  Name:       material-ocean
-  Author:     Mattia Astorino (http://github.com/equinusocio)
-  Website:    https://material-theme.site/
-*/
-
-.cm-s-inner.CodeMirror {
-  background-color: #0F111A;
-  color: #8F93A2;
-}
-
-.cm-s-inner .CodeMirror-gutters {
-  background: #0F111A;
-  color: #464B5D;
-  border: none;
-}
-
-.cm-s-inner .CodeMirror-linenumber {color: #464B5D;}
-.cm-s-inner .CodeMirror-guttermarker { color: #FFEE80; }
-.cm-s-inner .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
-
-/*
-.cm-s-inner .CodeMirror-cursor {
-  border-left: 1px solid #FFCC00;
-}
-.cm-s-inner.cm-fat-cursor .CodeMirror-cursor {
-  background-color: #FFCC00 !important;
-}
-.cm-s-inner .cm-animate-fat-cursor {
-  background-color: #FFCC00 !important;
-}
-*/
-
-.cm-s-inner .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
-.cm-s-inner div.CodeMirror-cursor { border-left: 1px solid #ffffff; }
-.cm-s-inner div.CodeMirror-selected {
-  background: rgba(113, 124, 180, 0.2);
-}
-
-.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
-  background: rgba(113, 124, 180, 0.2);
-}
-
-.cm-s-inner .CodeMirror-selected{ background: #214283 !important; }
-.cm-s-inner .CodeMirror-selectedtext { background: #214283 !important; }
-.cm-overlay.CodeMirror-selectedtext { background: #B5D6FC !important; }
-
-.cm-s-inner .CodeMirror-line::selection,
-.cm-s-inner .CodeMirror-line>span::selection,
-.cm-s-inner .CodeMirror-line>span>span::selection {
-  background: rgba(128, 203, 196, 0.2);
-}
-
-.cm-s-inner .CodeMirror-line::-moz-selection,
-.cm-s-inner .CodeMirror-line>span::-moz-selection,
-.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
-  background: rgba(128, 203, 196, 0.2);
-}
-
-/* .cm-s-inner .CodeMirror-activeline-background {
-  background: rgba(0, 0, 0, 0.5);
-} */
-
-.cm-s-inner .cm-keyword {
-  color: #C792EA;
-}
-
-.cm-s-inner .cm-operator {
-  color: #89DDFF;
-}
-
-.cm-s-inner .cm-variable-2 {
-  color: #EEFFFF;
-}
-
-.cm-s-inner .cm-variable-3,
-.cm-s-inner .cm-type {
-  color: #f07178;
-}
-
-.cm-s-inner .cm-builtin {
-  color: #FFCB6B;
-}
-
-.cm-s-inner .cm-atom {
-  color: #F78C6C;
-}
-
-.cm-s-inner .cm-number {
-  color: #FF5370;
-}
-
-.cm-s-inner .cm-def {
-  color: #82AAFF;
-}
-
-.cm-s-inner .cm-string {
-  color: #C3E88D;
-}
-
-.cm-s-inner .cm-string-2 {
-  color: #f07178;
-}
-
-.cm-s-inner .cm-comment {
-  color: #585d6d;
-}
-
-.cm-s-inner .cm-variable {
-  color: #f07178;
-}
-
-.cm-s-inner .cm-tag {
-  color: #FF5370;
-}
-
-.cm-s-inner .cm-meta {
-  color: #FFCB6B;
-}
-
-.cm-s-inner .cm-attribute {
-  color: #C792EA;
-}
-
-.cm-s-inner .cm-property {
-  color: #C792EA;
-}
-
-.cm-s-inner .cm-qualifier {
-  color: #DECB6B;
-}
-
-.cm-s-inner .cm-variable-3,
-.cm-s-inner .cm-type {
-  color: #DECB6B;
-}
-
-
-.cm-s-inner .cm-error {
-  color: rgba(255, 255, 255, 1.0);
-  background-color: #FF5370;
-}
-
-.cm-s-inner .CodeMirror-matchingbracket {
-  text-decoration: underline;
-  color: white !important;
-}
-
-
-
-
-
-</style><title>場所</title>
-</head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='東京'><span>東京</span></h1><h2 id='浅草あさくさ'><ruby><span>浅草</span><rt><span>あさくさ</span></rt></ruby></h2><p><span>⛩️</span><a href='https://www.senso-ji.jp/english/'><span>Sensō-ji</span></a><span> </span><a href='https://maps.app.goo.gl/FbKduLWjqnpgjHkH9'><span>📍</span></a><span> 🈚️</span></p><p><a href='https://www.asahibeer.co.jp/aboutus/summary/'><span>Asahi Group Head Office Super Dry Hall</span></a><span> </span><a href='https://maps.app.goo.gl/tug4mN4vCSGg9MhZ6'><span>📍</span></a></p><p><span>🏬🛣️</span><a href='https://asakusachikagai.com/'><span>Asakusa Underground Street</span></a><span> </span><a href='https://maps.app.goo.gl/18zb7Nmis9JNCznV8'><span>📍</span></a><span> 🎬️[Perfect Days]</span></p><ul><li><p><span>🍻</span><a href='https://www.instagram.com/drive_in_denden/'><span>Drive-in DenDen</span></a><span> </span><a href='https://maps.app.goo.gl/RFNgFkbs2Y7jaqmbA'><span>📍</span></a></p></li></ul><p><span>🛍️🛣️</span><a href='http://www.asakusa-nakamise.jp/'><span>Nakamise Shopping Street</span></a><span> </span><a href='https://maps.app.goo.gl/BqsF1GFp1r8vky618'><span>📍</span></a></p><p><span>🛍️🛣️</span><a href='https://www.asakusaomatsuri.com/'><span>Asakusa Nishi-sandō Shopping Street</span></a><span> </span><a href='https://maps.app.goo.gl/LD89g5YZfFJG48qt8'><span>📍</span></a></p><p><span>🛍️🛣️Kappabashi Hondōri Shopping Street </span><a href='https://maps.app.goo.gl/LgLC41nASAGkNneZA'><span>📍</span></a></p><ul><li><p><span>🔪Seisuke Knife </span><a href='https://maps.app.goo.gl/w5chX8oBWsxaJNim8'><span>📍</span></a><span>, Tojiro Knife </span><a href='https://maps.app.goo.gl/qzsm6Lo2fq4W3W7dA'><span>📍</span></a></p></li></ul><p><span>🍤</span><a href='http://www.tempura-sansada.co.jp/'><span>San-Sada</span></a><span> </span><a href='https://maps.app.goo.gl/yHyGsMseV72DGgnJ6'><span>📍</span></a></p><p><span>🍵👘</span><a href='https://mai-ko.com/what-to-do-in-japan/tokyo/tea-ceremony-tokyo/'><span>Kimono Tea Ceremony MAIKOYA Asakusa</span></a><span> </span><a href='https://maps.app.goo.gl/isy36GYHqhqUKHp4A'><span>📍</span></a><span> ¥6930～💴</span></p><h2 id='上野うえの'><ruby><span>上野</span><rt><span>うえの</span></rt></ruby></h2><p><span>🏛️</span><a href='https://www.tnm.jp/'><span>Tokyo National Museum</span></a><span> </span><a href='https://maps.app.goo.gl/F7tDH6zHZPt77qP5A'><span>📍</span></a></p><p><a href='https://www.taitogeibun.net/shitamachi/'><span>Shitamachi Museum</span></a><span> </span><a href='https://maps.app.goo.gl/yAbtP1mWkuAEwwwE7'><span>📍</span></a></p><p><a href='http://www.ameyoko.net/'><span>Ueno Ameyoko Shopping Street</span></a><span> </span><a href='https://maps.app.goo.gl/u3EJSnMbFG8cXXzNA'><span>📍</span></a></p><p><span>🏞️Ueno Park</span></p><ul><li><p><span>🐼</span><a href='https://www.tokyo-zoo.net/english/ueno/index.html'><span>Ueno Zoo</span></a><span> </span><a href='https://maps.app.goo.gl/jbjjfNcF3HouKgYk6'><span>📍</span></a><span> ¥600💴</span></p></li></ul><p><span>🥓Yakitori Torisho Honten </span><a href='https://maps.app.goo.gl/pjaFAcD2eQdBqkGG7'><span>📍</span></a></p><h2 id='千代田ちよだ'><ruby><span>千代田</span><rt><span>ちよだ</span></rt></ruby></h2><p><span>📚️Kanda-Jimbōchō Book Town </span><a href='https://maps.app.goo.gl/JGDWbEcRruXS2n2k9'><span>📍</span></a></p><ul><li><p><span>🍜</span><a href='https://ebimaru.com/'><span>Ebimaru Ramen</span></a><span> </span><a href='https://maps.app.goo.gl/EczVKEfg5vQN75FYA'><span>📍</span></a></p></li><li><p><span>🍜</span><a href='https://twitter.com/jbc_ramen_jiro'><span>Ramen Jiro Kanda Jinbocho</span></a><span> </span><a href='https://maps.app.goo.gl/aQma3BPFUVvuQUFh7'><span>📍</span></a></p></li><li><p><span>🍜</span><a href='https://r.goope.jp/paikutantan'><span>Paikō TanTan Gonoi</span></a><span> </span><a href='https://maps.app.goo.gl/xxC5kFCL6JSDJpJL9'><span>📍</span></a></p></li><li><p><span>🍜Kitakata Shokudō Jinbōchō </span><a href='https://maps.app.goo.gl/wJCk9zoUbRGe8sTD7'><span>📍</span></a></p></li><li><p><span>🍜</span><a href='http://lanzhou-lamian.com/'><span>Mǎzilù Lanzhou Beef Noodles</span></a><span> </span><a href='https://maps.app.goo.gl/ppx57ACwzvA464d98'><span>📍</span></a></p></li><li><p>☕️<span>Koseto </span><a href='https://maps.app.goo.gl/wBkXXUuiKCYBVP5t6'><span>📍</span></a></p></li><li><p>☕️<span>Milonga Nueva </span><a href='https://maps.app.goo.gl/e9qRLtZFzenhx3EX7'><span>📍</span></a></p></li><li><p><span>📚️</span><a href='http://www.tokyodo-web.co.jp/'><span>Books Tokyodo Kanda Jinbocho</span></a><span> </span><a href='https://maps.app.goo.gl/nmouwLHf9UYGckph6'><span>📍</span></a></p></li><li><p><span>📚️</span><a href='http://www.book-komiyama.co.jp/'><span>Komiyama Book Store</span></a><span> </span><a href='https://maps.app.goo.gl/E19Rjj6tkosbZS76A'><span>📍</span></a></p></li><li><p><span>📚️</span><a href='http://www.magnif.jp/'><span>magnif</span></a><span> </span><a href='https://maps.app.goo.gl/FWJH1YqhZBNsRSyYA'><span>📍</span></a></p></li><li><p><span>🎷Jazz BIGBOY </span><a href='https://maps.app.goo.gl/gxo6bkyCkFi39EGf8'><span>📍</span></a></p></li><li><p><span>🎷</span><a href='https://slwboat.com/'><span>On a slow boat to ...</span></a><span> </span><a href='https://maps.app.goo.gl/4hW2W9XXpnLjy8n67'><span>📍</span></a></p></li></ul><p><span>🏛️National Museum of Modern Art </span><a href='https://maps.app.goo.gl/5tTywqyvbBiVKXoi8'><span>📍</span></a></p><h2 id='新宿しんじゅく'><ruby><span>新宿</span><rt><span>しんじゅく</span></rt></ruby></h2><p><span>🏛️</span><a href='https://yayoikusamamuseum.jp/en/about/museum/'><span>YAYOI KUSAMA Museum</span></a><span> </span><a href='https://maps.app.goo.gl/tW74DHHHF5o4vW969'><span>📍</span></a><span> ¥1100💴</span></p><p><span>🏞️</span><a href='https://www.env.go.jp/garden/shinjukugyoen/index.html'><span>Shinjuku Gyoen National Garden</span></a><span> </span><a href='https://maps.app.goo.gl/S7eMBG5VxrQE6z8C6'><span>📍</span></a><span> 🎬️[Kotonoha no Niwa]</span></p><p><span>🍻Shinjuku Golden-Gai </span><a href='https://maps.app.goo.gl/sG78EtgnndVQpZEC6'><span>📍</span></a></p><p><span>📷️Map Camera, Kitamura, Lemon-sha </span><a href='https://maps.app.goo.gl/VWk4MThbjyD1Z2oz5'><span>📍</span></a></p><p><span>💿️</span><a href='https://tower.jp/store/Shinjuku'><span>Tower Records Shinjuku</span></a><span> </span><a href='https://maps.app.goo.gl/robxjrSZeWu7remW9'><span>📍</span></a></p><p>☕️<span>Coffee Seibu </span><a href='https://maps.app.goo.gl/xaqZz7X6MNh7c6x59'><span>📍</span></a></p><p><span>👘</span><a href='https://www.rakuten.co.jp/fukukimono/'><span>Recycled Kimono Fuku Fuku</span></a><span> </span><a href='https://maps.app.goo.gl/JXWe3h9pYik5RqVR8'><span>📍</span></a></p><p><span>🍻🏮</span><a href='https://kabukihall.com/'><span>Shinjuku Kabuki Hall Yokocho</span></a><span> </span><a href='https://maps.app.goo.gl/UGyX7JjniyWLF7tx6'><span>📍</span></a></p><p><span>🍻🏮</span><a href='http://shinjuku-omoide.com/'><span>Omoide Yokocho Memory Lane</span></a><span> </span><a href='https://maps.app.goo.gl/ENqVGYC5pLMAY62Y6'><span>📍</span></a></p><p><span>🍣Kaiten Sushi Numazuko </span><a href='https://maps.app.goo.gl/L7sXt6k4fuQU2rpKA'><span>📍</span></a></p><p><span>🍣</span><a href='http://sushitokyo-ten.com/'><span>Sushi Tokyo Ten</span></a><span> </span><a href='https://maps.app.goo.gl/V8y1ADRo3JGn8xWeA'><span>📍</span></a></p><h2 id='渋谷しぶや'><ruby><span>渋谷</span><rt><span>しぶや</span></rt></ruby></h2><p><span>🗺️Shibuya Scramble Crossing </span><a href='https://maps.app.goo.gl/4ZDJ17XR6GPCfx5w7'><span>📍</span></a></p><p><span>💿️Tower Records Shibuya </span><a href='https://maps.app.goo.gl/RJPcv1qtDhuBAyaQ7'><span>📍</span></a></p><p><span>🏬MEGA Don Quijote </span><a href='https://maps.app.goo.gl/11KjrD42CpLD5BDm8'><span>📍</span></a></p><p><span>🏬MUJI </span><a href='https://maps.app.goo.gl/UCy2Je6vJvZJaPi6A'><span>📍</span></a></p><p><a href='http://center-gai.jp/'><span>Shibuya Center-Gai Street</span></a><span> </span><a href='https://maps.app.goo.gl/w47eKX3EPufuoa4K7'><span>📍</span></a></p><p><span>🎎🕹️</span><a href='https://www.nintendo.co.jp/officialstore/index.html'><span>Nintendo Tokyo</span></a><span> </span><a href='https://maps.app.goo.gl/ejZC2pUUc4bzPYHv7'><span>📍</span></a></p><p><span>🎻Meikyoku Kissa Lion </span><a href='https://maps.app.goo.gl/fGii6mVzwqUTCk5F8'><span>📍</span></a></p><p>☕️<span>Chatei Hatou </span><a href='https://maps.app.goo.gl/suZitRJt2d5bN1eD8'><span>📍</span></a></p><p><span>🍻🏮</span><a href='http://nonbei.tokyo/'><span>Shibuya Nonbei Yokocho</span></a><span> </span><a href='https://maps.app.goo.gl/bfN6eRRsBe6B7RuMA'><span>📍</span></a></p><p><span>🍣</span><a href='https://uogashi-nihonichi.imachika.com/store/17'><span>Uogashi Nihon-Ichi Shibuya Dogenzaka</span></a><span> </span><a href='https://maps.app.goo.gl/yFnTWzHFwUWWetaJ7'><span>📍</span></a></p><p><span>🍣</span><a href='https://katumidori.co.jp/shop/?id=seibushibuya'><span>Katsu Seibu</span></a><span> </span><a href='https://maps.app.goo.gl/h2Cu8T5scgryjbNE7'><span>📍</span></a></p><p><span>🎁🎎</span><a href='https://the-doraemon-store.com/'><span>THE DORAEMON STORE</span></a><span> </span><a href='https://maps.app.goo.gl/Q2HPyiYt7c3L55dGA'><span>📍</span></a></p><p><a href='https://art.parco.jp/'><span>PARCO MUSEUM TOKYO</span></a><span> </span><a href='https://maps.app.goo.gl/ve3Ah7wKCcNU1jNo8'><span>📍</span></a></p><h3 id='原宿はらじゅく'><ruby><span>原宿</span><rt><span>はらじゅく</span></rt></ruby></h3><ul><li><p><a href='https://www.tokyo-park.or.jp/park/yoyogi/'><span>Yoyogi Park</span></a><span> </span><a href='https://maps.app.goo.gl/oXTi8GuDkMiS9JvGA'><span>📍</span></a></p></li><li><p><a href='https://www.meijijingu.or.jp/'><span>Meiji Jingu</span></a><span> </span><a href='https://maps.app.goo.gl/4wfgjoMojEdtq2pc6'><span>📍</span></a></p></li><li><p><span>🧥Sukajyan Dept. </span><a href='https://maps.app.goo.gl/vrCK1KU8uw1Lt2Tf8'><span>📍</span></a></p></li><li><p><a href='https://www.takeshita-street.com/'><span>Takeshita Street</span></a><span> </span><a href='https://maps.app.goo.gl/V52XP6brkwNZegbr9'><span>📍</span></a></p></li><li><p>☕️<span>Enseigne d&#39;angle Harajuku </span><a href='https://maps.app.goo.gl/mq4j4gyRh3adKGeP9'><span>📍</span></a></p></li></ul><h2 id='中野なかの'><ruby><span>中野</span><rt><span>なかの</span></rt></ruby></h2><p><span>🏬Nakano Broadway </span><a href='https://maps.app.goo.gl/Qz6CuQ7gw3KB6CJr8'><span>📍</span></a></p><ul><li><p><span>🎎Mandarake Nakano </span><a href='https://maps.app.goo.gl/ByPHTNLk57M3kh4K7'><span>📍</span></a></p></li><li><p><span>🍜Tonpei </span><a href='https://maps.app.goo.gl/LdNxoxNGdTuQ6qCA9'><span>📍</span></a></p></li></ul><p><span>📷️Fujiya Camera </span><a href='https://maps.app.goo.gl/ZQLSdnL9Wxe5gbScA'><span>📍</span></a></p><p><span>🍜Chūka-soba Aoba </span><a href='https://maps.app.goo.gl/HGjJPC3aCdf4t5BA7'><span>📍</span></a></p><p><span>🎷Rompercicci </span><a href='https://maps.app.goo.gl/JXSrrKrBRiCqcmBo6'><span>📍</span></a></p><h2 id='秋葉原あきはばら'><ruby><span>秋葉原</span><rt><span>あきはばら</span></rt></ruby></h2><p><span>🏬</span><a href='http://www.yodobashi.com/ec/store/0018/index.html'><span>Yodobashi Akiba</span></a><span> </span><a href='https://maps.app.goo.gl/8WsrGrQ2gRrRaZo36'><span>📍</span></a></p><p><span>🏬</span><a href='http://en.kotobukiya.co.jp/kotobukiya-akihabara-store-floor-guide/'><span>AKIHABARA KOTOBUKIYA</span></a><span> </span><a href='https://maps.app.goo.gl/FmKeee2nDnEBXJGv8'><span>📍</span></a></p><p><span>👕</span><a href='https://junkside.crayonsite.net/'><span>JUNK SIDE</span></a><span> </span><a href='https://maps.app.goo.gl/uRwC3RVQW5yLUy8t6'><span>📍</span></a></p><h2 id='中央ちゅうおう'><ruby><span>中央</span><rt><span>ちゅうおう</span></rt></ruby></h2><p><span>🏛️</span><a href='https://tsukijihongwanji.jp/'><span>Tsukiji Hongan-ji Temple</span></a><span> </span><a href='https://maps.app.goo.gl/JZ3ShXx9ZZVH5K7U6'><span>📍</span></a></p><p><span>🏬🎣</span><a href='https://www.tsukiji.or.jp/'><span>Tsukiji Outer Market</span></a><span> </span><a href='https://maps.app.goo.gl/VdVC42Kczs8dfLr4A'><span>📍</span></a></p><ul><li><p><span>🍣</span><a href='https://kurogin.co.jp/shop/tsukiji/'><span>Maguroya Kurogin</span></a><span> </span><a href='https://maps.app.goo.gl/UqLhayxiD4fLjxsj9'><span>📍</span></a></p></li></ul><h3 id='銀座ぎんざ'><ruby><span>銀座</span><rt><span>ぎんざ</span></rt></ruby></h3><ul><li><p><a href='https://www.tokyo-park.or.jp/park/format/index037.html'><span>Hibiya Park</span></a><span> </span><a href='https://maps.app.goo.gl/4Xa2HCJV21kt2Nnj6'><span>📍</span></a></p></li><li><p><span>Chuo-dori Ave. </span><a href='https://maps.app.goo.gl/dZ3KE9m9W94tNfQo7'><span>📍</span></a></p></li><li><p><span>👺🎭️</span><a href='https://www.kabuki-za.co.jp/'><span>Kabuki-za</span></a><span> </span><a href='https://maps.app.goo.gl/taVRDHyM4ykyCXvx5'><span>📍</span></a></p></li><li><p><span>🍜Ginza Tsukiya </span><a href='https://maps.app.goo.gl/TopdhGkPZCT1CyqM6'><span>📍</span></a></p></li><li><p><span>🏬</span><a href='https://www.mistore.jp/store/ginza.html'><span>Mitsukoshi Ginza</span></a><span> </span><a href='https://maps.app.goo.gl/SnsxNezRDiMpCQg59'><span>📍</span></a></p></li><li><p><span>🏬</span><a href='https://map.uniqlo.com/jp/ja/detail/10101397'><span>UNIQLO</span></a><span> </span><a href='https://maps.app.goo.gl/eN6CgBNCAyyuDQzw9'><span>📍</span></a></p></li><li><p><span>🏬</span><a href='https://www.muji.com/jp/ja/shop/detail/046604?sc_cid=google_map_046604_shop&amp;utm_campaign=046604_shop&amp;utm_medium=map&amp;utm_source=google'><span>MUJI - Ginza Flagship Store</span></a><span> </span><a href='https://maps.app.goo.gl/9jbfQR64uC7B8gTq8'><span>📍</span></a></p></li><li><p><span>📷️</span><a href='http://www.katsumido-camera.com/'><span>KATSUMIDO Camera</span></a><span> </span><a href='https://maps.app.goo.gl/uBM2igxEQ45VyK7c9'><span>📍</span></a></p></li></ul><h3 id='日本橋にほんばし'><ruby><span>日本橋</span><rt><span>にほんばし</span></rt></ruby></h3><ul><li><p><span>🍣🎣</span><a href='https://www.tsujihan-jp.com/'><span>Nihonbashi Kaisen Donburi Tsujihan</span></a><span> </span><a href='https://maps.app.goo.gl/g8jTQCGcBumi6oHs8'><span>📍</span></a></p></li></ul><h2 id='台東たいとう'><ruby><span>台東</span><rt><span>たいとう</span></rt></ruby></h2><p><span>🛍️🛣️</span><a href='http://www.yanakaginza.com/'><span>Yanaka Ginza</span></a><span> </span><a href='https://maps.app.goo.gl/pm96H6q4Dvo4yqbq8'><span>📍</span></a></p><h2 id='江東こうとう'><ruby><span>江東</span><rt><span>こうとう</span></rt></ruby></h2><p><span>🏞️</span><a href='https://www.tokyo-park.or.jp/park/kiyosumi/'><span>Kiyosumi Gardens</span></a><span> </span><a href='https://maps.app.goo.gl/V8WC9ccz3tJ3gqw68'><span>📍</span></a></p><p><span>🏛️</span><a href='https://www.e-tix.jp/mot/en/'><span>Museum of Contemporary Art Tokyo</span></a><span> </span><a href='https://maps.app.goo.gl/rcbD3vBp1xrniDZc7'><span>📍</span></a><span> ¥3000💴</span></p><h2 id='港区みなと'><ruby><span>港区</span><rt><span>みなと</span></rt></ruby></h2><p><span>🏛️Odaiba Retro Museum </span><a href='https://maps.app.goo.gl/VcdjXLeiN5VpNAoB6'><span>📍</span></a></p><p><a href='https://www.nezu-muse.or.jp/'><span>Nezu Museum</span></a><span> </span><a href='https://maps.app.goo.gl/1TQHwagMx45ugamGA'><span>📍</span></a></p><p><span>🎺</span><a href='http://www.bluenote.co.jp/'><span>Blue Note Tokyo</span></a><span> </span><a href='https://maps.app.goo.gl/Q71PHfdKHXAn63as8'><span>📍</span></a></p><p><span>🗼</span><a href='https://www.tokyotower.co.jp/'><span>Tokyo Tower</span></a><span> </span><a href='https://maps.app.goo.gl/DiYyZqoymdjZ9zEu5'><span>📍</span></a></p><h2 id='江戸川えどがわ'><ruby><span>江戸川</span><rt><span>えどがわ</span></rt></ruby></h2><p><span>🐧</span><a href='https://www.tokyo-zoo.net/english/kasai/index.html'><span>Tokyo Sea Life Park</span></a><span> </span><a href='https://maps.app.goo.gl/Yrdb7YkhewixUufq9'><span>📍</span></a><span> ¥700💴</span></p><h2 id='千葉ちば'><ruby><span>千葉</span><rt><span>ちば</span></rt></ruby></h2><p><span>🎡</span><a href='https://www.tokyodisneyresort.jp/en/tdl.html'><span>Tokyo Disneyland</span></a><span> </span><a href='https://maps.app.goo.gl/Az1GKAyKBgAMGxQf6'><span>📍</span></a><span> ¥7900～10900💴</span></p><h2 id='三鷹みたか'><ruby><span>三鷹</span><rt><span>みたか</span></rt></ruby></h2><p><span>🏛️</span><a href='https://www.ghibli-museum.jp/'><span>Ghibli Museum</span></a><span> </span><a href='https://maps.app.goo.gl/WzmrLQ7SPpnrpTEV7'><span>📍</span></a><span> ¥1000💴</span></p><h2 id='町田まちだ'><ruby><span>町田</span><rt><span>まちだ</span></rt></ruby></h2><p><span>🏛️</span><a href='https://snoopymuseum.tokyo/s/smt/page/english'><span>Snoopy Museum Tokyo</span></a><span> </span><a href='https://maps.app.goo.gl/24FeZbshd4jcEF7a8'><span>📍</span></a><span> ¥1800～2000💴</span></p><h2 id='品川しながわ'><ruby><span>品川</span><rt><span>しながわ</span></rt></ruby></h2><p><span>🏬Tokyo City Flea Market</span></p><p><span>🛍️🛣️</span><a href='http://www.musashikoyama-palm.jp/'><span>Musashi-Koyama Shopping Street “Palm”</span></a><span> </span><a href='https://maps.app.goo.gl/bastbycWRLR5edUM7'><span>📍</span></a></p><p>&nbsp;</p><hr /><h1 id='東京の近く'><span>東京の近く</span></h1><h2 id='日光にっこう'><ruby><span>日光</span><rt><span>にっこう</span></rt></ruby></h2><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚉Asakusa Station ⇒ Tobu-Nikko Station ¥3050💴</span></p></div><p><span>🏯</span><a href='https://www.toshogu.jp/'><span>Nikkō Tōshogū</span></a><span> </span><a href='https://maps.app.goo.gl/bQTS8pdihq8dSoQt7'><span>📍</span></a><span> ¥1300💴</span></p><p><span>🏯Nikkozan Rin’nōji Temple </span><a href='https://maps.app.goo.gl/7QVyBAvQoVGs7ZtY7'><span>📍</span></a><span> ¥400💴</span></p><p><span>🌉Shinkyō Bridge </span><a href='https://maps.app.goo.gl/JCeo8KP8tXEcy4326'><span>📍</span></a><span> ¥300💴</span></p><p><span>🏞️🌊Kegon Waterfalls </span><a href='https://maps.app.goo.gl/toCfBiZBs7MBm3Cx6'><span>📍</span></a></p><h2 id='鎌倉かまくら'><ruby><span>鎌倉</span><rt><span>かまくら</span></rt></ruby></h2><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚉Shinjuku Station ⇒ Fujisawa Station</span></p><p><span>🚉Enoden: Fujisawa Station ⇒ Enoshima Station ¥310💴 (Noriorikun 1 Day Pass for ¥800)</span></p></div><p><span>🚉Kamakurakōkō-Mae Station </span><a href='https://maps.app.goo.gl/iBjRwje7PLustRFJ9'><span>📍</span></a><span> 🎬️[Slam Dunk]</span></p><p><span>🕉️</span><a href='https://www.kotoku-in.jp/'><span>Kotoku-in Big Buddha</span></a><span> </span><a href='https://maps.app.goo.gl/wB7efuK3FyZ5Cyf18'><span>📍</span></a></p><p><span>🏯</span><a href='https://www.hasedera.jp/'><span>Hasedera Temple</span></a><span> </span><a href='https://maps.app.goo.gl/mNbm9KXTmPGKaBca6'><span>📍</span></a></p><p><span>⛩️</span><a href='https://www.hachimangu.or.jp/'><span>Tsurugaoka Hachimangu</span></a><span> </span><a href='https://maps.app.goo.gl/PT1gWVj4dZ9rgQfYA'><span>📍</span></a></p><p><span>🍵👘</span><a href='https://osaragijiro.jp/'><span>Jiro Osaragi Teahouse</span></a><span> </span><a href='https://maps.app.goo.gl/yFtEsSHvrTGce2fo9'><span>📍</span></a><span> Weekends only</span></p><p><span>🛍️🛣️Komachi Street </span><a href='https://maps.app.goo.gl/RphoV7q52ZBkCLDh8'><span>📍</span></a></p><p><span>🍵🥛</span><a href='https://instagram.com/8108kamakura?igshid=OGQ5ZDc2ODk2ZA=='><span>Hatoya Kamakura</span></a><span> </span><a href='https://maps.app.goo.gl/bA8Vcz1bBUA9dr2e8'><span>📍</span></a></p><p><span>🍽️</span>☕️<a href='http://yoridocoro.com/'><span>yoridokoro</span></a><span> </span><a href='https://maps.app.goo.gl/HfJnbMpNxEvti96u8'><span>📍</span></a></p><p><span>🏯🌿</span><a href='http://www.houkokuji.or.jp/'><span>Houkokuji</span></a><span> </span><a href='https://maps.app.goo.gl/DPJ75rP6kxYut2n29'><span>📍</span></a></p><p><span>⛩️⛩️⛩️</span><a href='http://sasukeinari.jp/'><span>Sasuke Inari Shrine</span></a><span> </span><a href='https://maps.app.goo.gl/LDqj3hoTpX3KPtpSA'><span>📍</span></a></p><hr /><h1 id='京都'><span>京都</span></h1><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚅Nozomi Shinkansen: Tokyo ⇒ Kyoto ¥14170💴 2:10⏲️</span></p><p><span>🏨Stay in: Gion</span></p></div><h2 id='中京なかぎょう'><ruby><span>中京</span><rt><span>なかぎょう</span></rt></ruby></h2><p><span>🏛️The Museum of Kyoto </span><a href='https://maps.app.goo.gl/EHFQ7vMbZy8Yvkau7'><span>📍</span></a></p><p><span>🏛️Kyoto International Manga Museum </span><a href='https://maps.app.goo.gl/HGBHzAso57QnVkqz9'><span>📍</span></a></p><p><span>🏬Nishiki Market </span><a href='https://maps.app.goo.gl/RKWxRS6aNKcqXFVs8'><span>📍</span></a></p><p><span>🛣️Pontocho Alley </span><a href='https://maps.app.goo.gl/agpP7Kc7nBAcC9A47'><span>📍</span></a></p><ul><li><p><span>🥩Yakiniku Hiro </span><a href='https://maps.app.goo.gl/anwBe6nLGqrMDiFG9'><span>📍</span></a></p></li></ul><p><span>👘Harajuku Chicago </span><a href='https://maps.app.goo.gl/fp9CwKb4RWA3ug729'><span>📍</span></a></p><p><span>👘Mimuro </span><a href='https://maps.app.goo.gl/GCjf9otvCA5jbQkz9'><span>📍</span></a></p><p><span>🥩Steak &amp; Wine </span><a href='https://maps.app.goo.gl/Ck2n3vMbBNryeMBm7'><span>📍</span></a></p><p><span>🍜Ramen Sen-no-Kaze </span><a href='https://maps.app.goo.gl/t8ePWUL4UTZ58MT9A'><span>📍</span></a></p><h2 id='東山区ひがしやま'><ruby><span>東山区</span><rt><span>ひがしやま</span></rt></ruby></h2><p><span>🛣️Hanami-koji Street </span><a href='https://maps.app.goo.gl/VNmYbhnxEjyzvgmW9'><span>📍</span></a></p><p><span>⛩️Yasaka Shrine </span><a href='https://maps.app.goo.gl/Qfj3HWwQD6PbqPt98'><span>📍</span></a></p><p><span>🏛️Gion Kagai Art Museum </span><a href='https://maps.app.goo.gl/MYsV5GFLVNL1vbUx9'><span>📍</span></a></p><p>☕️<span>🍡Kagizen Yoshifusa Kodaiji </span><a href='https://maps.app.goo.gl/8fLtauFwXato3NdU9'><span>📍</span></a></p><p>☕️<span>🍡Kagizen Yoshifusa Shijo (Main) </span><a href='https://maps.app.goo.gl/Af7HdQGLR95mZzoZA'><span>📍</span></a></p><p><span>🏯Hōkan-ji (Yasaka Pagoda) </span><a href='https://maps.app.goo.gl/iR9hSNbsKQTbCavTA'><span>📍</span></a></p><p><span>🏯🌿</span><a href='https://www.kodaiji.com/'><span>Kōdaiji Temple</span></a><span> </span><a href='https://maps.app.goo.gl/kzdiXyfcZ1KzmCxx8'><span>📍</span></a></p><p><span>🛣️Ninenzaka </span><a href='https://maps.app.goo.gl/CLgL1wgPu3SjQQgs5'><span>📍</span></a></p><p><span>🛣️Sannenzaka </span><a href='https://maps.app.goo.gl/aqvNBzirZxaLR3AZ9'><span>📍</span></a></p><p><span>🏯Kiyomizudera </span><a href='https://maps.app.goo.gl/VRWze3kdRXUA8Fyt6'><span>📍</span></a></p><h2 id='左京さきょう'><ruby><span>左京</span><rt><span>さきょう</span></rt></ruby></h2><p><span>🏯Nanzenji Temple </span><a href='https://maps.app.goo.gl/hC2YBd2XFZBTAidv7'><span>📍</span></a></p><p><span>🏯Eikando Temple </span><a href='https://maps.app.goo.gl/2Mp1bZkWxDSQ1GHQ6'><span>📍</span></a></p><p><span>⛩️🐇</span><a href='https://www.japan-experience.com/all-about-japan/kyoto/temples-shrines/okazaki'><span>Okazaki Shrine</span></a><span> </span><a href='https://maps.app.goo.gl/iAKzv85U9CLX6ihr5'><span>📍</span></a><span> 🈚️</span></p><p><span>🏯🍀</span><a href='https://souda-kyoto.jp/guide/spot/nanzenji-tenjuan.html'><span>Tenjuan Temple</span></a><span> </span><a href='https://maps.app.goo.gl/ECFTghAcAxDs9wBy8'><span>📍</span></a><span> ¥500💴</span></p><h2 id='嵐山あらしやま'><ruby><span>嵐山</span><rt><span>あらしやま</span></rt></ruby></h2><p><span>🌿🌲Arashiyama Bamboo Forest </span><a href='https://maps.app.goo.gl/YGCLSotjCDBB8rwp8'><span>📍</span></a><span> 🈚️</span></p><p><span>🌿🌲</span><a href='https://nenbutsuji.jp/eng/'><span>Adashino Nenbutsuji Temple</span></a><span> </span><a href='https://maps.app.goo.gl/NaFvD1DxfUCfRvzT9'><span>📍</span></a><span> ¥500💴 9:00〜16:30🕗️</span></p><p><span>⛩️🗿</span><a href='http://www.otagiji.com/'><span>Otagi Nenbutsuji Temple</span></a><span> </span><a href='https://maps.app.goo.gl/ijqBZK6zmSXBt4WT7'><span>📍</span></a><span> ¥500💴</span></p><p><span>🏯Tenryuji </span><a href='https://maps.app.goo.gl/q8N99KniSFHCzmiB6'><span>📍</span></a></p><p><span>🏯Daihikaku Senkō-ji </span><a href='https://maps.app.goo.gl/MtDrSkjpWo4oojf89'><span>📍</span></a></p><p><span>🏞️🐒</span><a href='http://www.monkeypark.jp/eng-index.html'><span>Iwatayama Monkey Park</span></a><span> </span><a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6'><span>📍</span></a><span> ¥800💴</span></p><p><span>🛤️</span><a href='https://ars-saganokanko.triplabo.jp/home'><span>Sagano Romantic Train</span></a><span> </span><a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6'><span>📍</span></a><span> ¥880～💴</span></p><p><span>⛵️</span><a href='https://translation2.j-server.com/LUCHZGWK/ns/tl.cgi/https://www.hozugawakudari.jp/tickets?SLANG=ja&amp;TLANG=en&amp;XMODE=0&amp;XCHARSET=UTF-8&amp;XJSID=0'><span>Hozugawa River Boat Ride</span></a><span> </span><a href='https://maps.app.goo.gl/rPwk1cme9hrr5fCQ7'><span>📍</span></a><span> ¥6000💴</span></p><h2 id='上京かみぎょう'><ruby><span>上京</span><rt><span>かみぎょう</span></rt></ruby></h2><p><span>🏞️</span><a href='https://kyotogyoen.go.jp/'><span>Kyoto Gyoen National Garden</span></a><span> </span><a href='https://maps.app.goo.gl/mHWuCU3g8AQSJfZX9'><span>📍</span></a></p><h2 id='northwest'><span>Northwest</span></h2><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚉Eizan Railway: </span><a href='https://maps.app.goo.gl/v6ZG2V39k5TsQMsE8'><span>Demachiyanagi Station</span></a><span> ⇒ </span><a href='https://maps.app.goo.gl/qT88eRY2v8PsxKDRA'><span>Kibuneguchi Station</span></a></p></div><p><span>🏯</span><a href='https://www.shokoku-ji.jp/kinkakuji/'><span>Kinkaku-ji</span></a><span> </span><a href='https://maps.app.goo.gl/8MKR2zWwte8sjb1h7'><span>📍</span></a><span> ¥500💴</span></p><p><span>🏯</span><a href='http://www.daikakuji.or.jp/'><span>Daikaku-ji Temple</span></a><span> </span><a href='https://maps.app.goo.gl/PUthVBEz8GfbiUdY9'><span>📍</span></a></p><p><span>🌲Kurama to Kibune Hike </span><a href='https://maps.app.goo.gl/udEXsaEYhZPXCYav5'><span>📍</span></a><span> 2-3 hs⏲️</span></p><ul><li><p><span>🚉Kibuneguchi Station </span><a href='https://maps.app.goo.gl/GfrFPJ81Ag22sLKX6'><span>📍</span></a></p></li></ul><p><span>🏞️</span><a href='http://www.pref.kyoto.jp/plant/'><span>Kyoto Botanic Garden</span></a><span> </span><a href='https://maps.app.goo.gl/haDPXZTKe69eMtxXA'><span>📍</span></a></p><h2 id='south'><span>South</span></h2><p><span>⛩️⛩️⛩️</span><a href='https://inari.jp/'><span>Fushimi Inari</span></a><span> </span><a href='https://maps.app.goo.gl/PVyhyuG3ZHxiZTML8'><span>📍</span></a></p><hr /><h1 id='大阪'><span>大阪</span></h1><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚅Nozomi Shinkansen: Tokyo ⇒ Shin-Osaka ¥14720💴</span></p><p><span>🏨Stay in: Namba</span></p></div><h2 id='中央ちゅうおう-2'><ruby><span>中央</span><rt><span>ちゅうおう</span></rt></ruby></h2><p><span>🏯</span><a href='https://osakacastle.org/'><span>Osaka Castle</span></a><span> </span><a href='https://maps.app.goo.gl/ETgWfQ2CqoTysCvd6'><span>📍</span></a></p><p><span>🏬🛣️</span><a href='http://www.dotonbori.or.jp/ja/'><span>Dotonbori</span></a><span> </span><a href='https://maps.app.goo.gl/cQEyMkMrqvXAZRQV6'><span>📍</span></a></p><ul><li><p><span>🎡</span><a href='https://www.donki.com/kanransha/'><span>Ebisu Tower Ferris Wheel (Don Quijote)</span></a><span> </span><a href='https://maps.app.goo.gl/3mgCVHHdfWXdSwNE9'><span>📍</span></a><span> ¥1000💴</span></p></li></ul><p><span>🏬🛣️</span><a href='https://kuromon.com/jp/'><span>Kuromon Market</span></a><span> </span><a href='https://maps.app.goo.gl/Dhs3kbhwcFkDyE8q6'><span>📍</span></a></p><p><span>🏬PLAZA Shinsaibashi PARCO Store </span><a href='https://maps.app.goo.gl/YV7CqS8rSeGF2aTy7'><span>📍</span></a></p><ul><li><p><span>🐉Donguri Kyowakoku (Ghibli Store), 6th floor </span><a href='https://maps.app.goo.gl/VUEKFBkGSkSUNSgh9'><span>📍</span></a></p></li></ul><p><span>🏬🗽</span><a href='https://osaka-info.jp/spot/america-mura-american-village/'><span>Amerika Mura</span></a><span> </span><a href='https://maps.app.goo.gl/4s9tWztpTKzbUTs37'><span>📍</span></a></p><p><span>🏬🛣️</span><a href='https://www.nippombashi.jp/'><span>Nipponbashi Denden Town</span></a><span> </span><a href='https://maps.app.goo.gl/8Wrj24GjHPXEXDK98'><span>📍</span></a></p><p><span>🛍️🛣️Sennichimae Doguyasuji Shopping Street for cookware </span><a href='https://maps.app.goo.gl/KCGFDaJigrYJ7s817'><span>📍</span></a></p><p><span>🎎Torejaras </span><a href='https://maps.app.goo.gl/yhJxgWkUm2v8V9sF6'><span>📍</span></a></p><p><span>🐉Donguri Kyowakoku (Ghibli Store) Namba </span><a href='https://maps.app.goo.gl/WtPKuXRnnjYBRfkNA'><span>📍</span></a></p><h2 id='北区きたく'><ruby><span>北区</span><rt><span>きたく</span></rt></ruby></h2><p><span>🛍️🛣️</span><a href='https://www.tenjin123.com/'><span>Tenjinbashi-suji Shopping Street</span></a><span> </span><a href='https://maps.app.goo.gl/A96no8K8sBNFMZ2QA'><span>📍</span></a></p><p><span>🎻The Symphony Hall </span><a href='https://maps.app.goo.gl/khgsuf4s6ahevXSAA'><span>📍</span></a></p><p><span>🐉Donguri Kyowakoku (Ghibli Store) </span><a href='https://maps.app.goo.gl/a8NUCjg8YUWoazSN6'><span>📍</span></a></p><p><span>👕Kinji Used Clothing </span><a href='https://maps.app.goo.gl/QfyL8GfGKnnuMgh4A'><span>📍</span></a></p><h2 id='north'><span>North</span></h2><p><span>🏛️</span><a href='https://www.city.takarazuka.hyogo.jp/tezuka/'><span>The Osamu Tezuka Manga Museum</span></a><span> </span><a href='https://maps.app.goo.gl/h6iR9CyxNTWmpLoDA'><span>📍</span></a><span> ¥700💴</span></p><p><span>🏛️</span><a href='https://www.cupnoodles-museum.jp/en/osaka_ikeda/'><span>Cup Noodles Museum Osaka Ikeda</span></a><span> </span><a href='https://maps.app.goo.gl/ppJCY6rNGEob6AKa6'><span>📍</span></a><span> 🈚️</span></p><p><span>🗺️</span>☀️<a href='http://taiyounotou-expo70.jp/'><span>Tower of the Sun</span></a><span> </span><a href='https://maps.app.goo.gl/mgNkHjVF5SYPvkt26'><span>📍</span></a></p><h2 id='south-2'><span>South</span></h2><p><span>🏬🛣️</span><a href='https://shinsekaiofficial.com/'><span>Shinsekai</span></a><span> </span><a href='https://maps.app.goo.gl/JBERNwhUkhNribEo9'><span>📍</span></a></p><hr /><h1 id='大阪の近く'><span>大阪の近く</span></h1><h2 id='奈良なら'><ruby><span>奈良</span><rt><span>なら</span></rt></ruby></h2><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚉Osaka-Namba Station ⇒ Kintetsu-Nara Station</span></p><p><span>🚄</span><a href='https://www.kintetsu.co.jp/foreign/english/aoniyoshi/'><span>Aoniyoshi Limited Express</span></a><span> ¥1410💴</span></p></div><p><span>🏞️🦌</span><a href='https://www.visitnara.jp/destinations/area/nara-park/'><span>Nara Park</span></a><span> </span><a href='https://maps.app.goo.gl/oQnj8FTKGiriZUtq9'><span>📍</span></a><span> 🈚️</span></p><p><span>🏯Tōdai-ji </span><a href='https://maps.app.goo.gl/fnBLhmbJj2xRGfcc8'><span>📍</span></a></p><p><span>⛩️</span><a href='https://www.kasugataisha.or.jp/'><span>Kasugataisha Shrine</span></a><span> </span><a href='https://maps.app.goo.gl/D6SbGur8QrPc9zhn8'><span>📍</span></a></p><p><span>🛍️🏬Higashimuki Shopping Street </span><a href='https://maps.app.goo.gl/nMzWSWm9nvFG2FSU7'><span>📍</span></a></p><p><span>🛍️🏬Mochiidonocho Shopping Street </span><a href='https://maps.app.goo.gl/SXJTVNfKKUzSTMoi7'><span>📍</span></a></p><p><span>🍽️🐟️Maguro Koya </span><a href='https://maps.app.goo.gl/4nigqCWMJEW57SJv5'><span>📍</span></a></p><p><span>🍡Nakatanidou </span><a href='https://maps.app.goo.gl/3szMmL7y2frtXDFV9'><span>📍</span></a></p><h2 id='姫路ひめじ'><ruby><span>姫路</span><rt><span>ひめじ</span></rt></ruby></h2><p><span>🏯</span><a href='https://www.city.himeji.lg.jp/castle/index.html'><span>Himeji Castle</span></a><span> </span><a href='https://maps.app.goo.gl/XGvea8gZgvLMFiGn8'><span>📍</span></a></p><hr /><h1 id='名古屋なごや'><ruby><span>名古屋</span><rt><span>なごや</span></rt></ruby></h1><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚉Higashiyama Line: Nagoya Station ⇒ Ghibli Park 1:00</span></p></div><p><span>🎡</span><a href='https://ghibli-park.jp/en/'><span>Ghibli Park</span></a><span> </span><a href='https://maps.app.goo.gl/awbyRNjhjCER369r9'><span>📍</span></a><span> ¥3300～7800💴</span></p><p><span>🏯</span><a href='https://www.nagoyajo.city.nagoya.jp/'><span>Nagoya Castle</span></a><span> </span><a href='https://maps.app.goo.gl/MV2ow112AC6A3zoB9'><span>📍</span></a><span> ¥500💴 9:00〜16:30🕗️</span></p><p><span>🏛️Nagoya City Art Museum </span><a href='https://maps.app.goo.gl/E18W9MTM2BAxUm1L9'><span>📍</span></a></p><p><span>🛍️🛣️Osu Shotengai Shopping Street </span><a href='https://maps.app.goo.gl/LJ6TH1BEHkGF2BPLA'><span>📍</span></a></p><p><span>🏞️Yōkisō </span><a href='https://maps.app.goo.gl/TsWtMGMB6sWsixZJA'><span>📍</span></a></p><p><span>🏯Nittai-ji </span><a href='https://maps.app.goo.gl/ALaHydTjyZTNDGXp8'><span>📍</span></a></p><p><span>⛩️</span><a href='https://www.atsutajingu.or.jp/'><span>Atsuta-jingu Shrine</span></a><span> </span><a href='https://maps.app.goo.gl/pgvzqk1pAnRnBJ5M9'><span>📍</span></a></p><p><span>🏛️🚄</span><a href='http://museum.jr-central.co.jp/'><span>SCMaglev and Railway Park</span></a><span> </span><a href='https://maps.app.goo.gl/BpPdooN5NuipXbm89'><span>📍</span></a></p><hr /><h1 id='岐阜ぎふ'><ruby><span>岐阜</span><rt><span>ぎふ</span></rt></ruby></h1><h2 id='高山たかやま'><ruby><span>高山</span><rt><span>たかやま</span></rt></ruby></h2><p><a href='https://hidanosato.com/'><span>Hida no Sato Folk Village Museum</span></a><span> </span><a href='https://maps.app.goo.gl/Qwe3mmcuVnf9DtaaA'><span>📍</span></a></p><h2 id='飛騨ひだ'><ruby><span>飛騨</span><rt><span>ひだ</span></rt></ruby></h2><h2 id='白川しらかわ'><ruby><span>白川</span><rt><span>しらかわ</span></rt></ruby></h2><p><a href='http://www.hidatakayama.ne.jp/taguchiya/index.html'><span>Taguchiya Shop</span></a><span> </span><a href='https://maps.app.goo.gl/cQ38567eDTzPWHJa8'><span>📍</span></a></p><hr /><h1 id='箱根はこね'><ruby><span>箱根</span><rt><span>はこね</span></rt></ruby></h1><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>🚅Shinkansen: Kyoto/Osaka ⇒ Odawara 2:00</span></p><p><span>Odakyu Line: Odawara Station ⇒ Hakone ¥250～¥330💴 14min⏲️</span></p><p><span>Limited Express Romancecar: Hakone ⇒ Tokyo ¥1200💴 1:20⏲️</span></p></div><p><span>🗻</span>♨️</p><hr /><h1 id='チェーンストア'><span>チェーンストア</span></h1><p><span>🥓Torikizoku: Yakitori </span><a href='https://maps.app.goo.gl/c9YUbshVZ4uB6CT66'><span>📍</span></a></p><p><span>🍜Kineya: Udon Noodles </span><a href='https://maps.app.goo.gl/7A3eBhFp77c2viEx8'><span>📍</span></a></p><p><span>🍣Sushiro: Sushi </span><a href='https://maps.app.goo.gl/f9xiBLAUv8SJDgs88'><span>📍</span></a></p><p><span>🍜ICHIRAN: Tonkotsu Ramen </span><a href='https://maps.app.goo.gl/XmUr7DH1MAEDF6pa9'><span>📍</span></a></p><p><span>🍲Yoshinoya: Gyudon </span><a href='https://maps.app.goo.gl/iKemuSYW9iuYJaFN7'><span>📍</span></a></p><p><span>🍚Katsuya: Fast Food </span><a href='https://maps.app.goo.gl/eGdL6W8N3F1a3K6CA'><span>📍</span></a></p></div></div>
+<title>場所</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="all"></head>
+<body><h1 id='東京'>東京</h1>
+<h2><ruby>浅草<rt>あさくさ</rt></ruby></h2>
+<p>⛩️<a href='https://www.senso-ji.jp/english/'>Sensō-ji</a> <a href='https://maps.app.goo.gl/FbKduLWjqnpgjHkH9'>📍</a> 🈚️</p>
+<p><a href='https://www.asahibeer.co.jp/aboutus/summary/'>Asahi Group Head Office Super Dry Hall</a> <a href='https://maps.app.goo.gl/tug4mN4vCSGg9MhZ6'>📍</a></p>
+<p>🏬🛣️<a href='https://asakusachikagai.com/'>Asakusa Underground Street</a> <a href='https://maps.app.goo.gl/18zb7Nmis9JNCznV8'>📍</a> 🎬️[Perfect Days]</p>
+<ul>
+<li>🍻<a href='https://www.instagram.com/drive_in_denden/'>Drive-in DenDen</a> <a href='https://maps.app.goo.gl/RFNgFkbs2Y7jaqmbA'>📍</a></li>
+
+</ul>
+<p>🛍️🛣️<a href='http://www.asakusa-nakamise.jp/'>Nakamise Shopping Street</a> <a href='https://maps.app.goo.gl/BqsF1GFp1r8vky618'>📍</a></p>
+<p>🛍️🛣️<a href='https://www.asakusaomatsuri.com/'>Asakusa Nishi-sandō Shopping Street</a> <a href='https://maps.app.goo.gl/LD89g5YZfFJG48qt8'>📍</a></p>
+<p>🛍️🛣️Kappabashi Hondōri Shopping Street <a href='https://maps.app.goo.gl/LgLC41nASAGkNneZA'>📍</a></p>
+<ul>
+<li>🔪Seisuke Knife <a href='https://maps.app.goo.gl/w5chX8oBWsxaJNim8'>📍</a>, Tojiro Knife <a href='https://maps.app.goo.gl/qzsm6Lo2fq4W3W7dA'>📍</a></li>
+
+</ul>
+<p>🍤<a href='http://www.tempura-sansada.co.jp/'>San-Sada</a> <a href='https://maps.app.goo.gl/yHyGsMseV72DGgnJ6'>📍</a></p>
+<p>🍵👘<a href='https://mai-ko.com/what-to-do-in-japan/tokyo/tea-ceremony-tokyo/'>Kimono Tea Ceremony MAIKOYA Asakusa</a> <a href='https://maps.app.goo.gl/isy36GYHqhqUKHp4A'>📍</a> ¥6930～💴</p>
+<h2><ruby>上野<rt>うえの</rt></ruby></h2>
+<p>🏛️<a href='https://www.tnm.jp/'>Tokyo National Museum</a> <a href='https://maps.app.goo.gl/F7tDH6zHZPt77qP5A'>📍</a></p>
+<p><a href='https://www.taitogeibun.net/shitamachi/'>Shitamachi Museum</a> <a href='https://maps.app.goo.gl/yAbtP1mWkuAEwwwE7'>📍</a></p>
+<p><a href='http://www.ameyoko.net/'>Ueno Ameyoko Shopping Street</a> <a href='https://maps.app.goo.gl/u3EJSnMbFG8cXXzNA'>📍</a></p>
+<p>🏞️Ueno Park</p>
+<ul>
+<li>🐼<a href='https://www.tokyo-zoo.net/english/ueno/index.html'>Ueno Zoo</a> <a href='https://maps.app.goo.gl/jbjjfNcF3HouKgYk6'>📍</a> ¥600💴</li>
+
+</ul>
+<p>🥓Yakitori Torisho Honten <a href='https://maps.app.goo.gl/pjaFAcD2eQdBqkGG7'>📍</a></p>
+<h2><ruby>千代田<rt>ちよだ</rt></ruby></h2>
+<p>📚️Kanda-Jimbōchō Book Town <a href='https://maps.app.goo.gl/JGDWbEcRruXS2n2k9'>📍</a></p>
+<ul>
+<li>🍜<a href='https://ebimaru.com/'>Ebimaru Ramen</a> <a href='https://maps.app.goo.gl/EczVKEfg5vQN75FYA'>📍</a></li>
+<li>🍜<a href='https://twitter.com/jbc_ramen_jiro'>Ramen Jiro Kanda Jinbocho</a> <a href='https://maps.app.goo.gl/aQma3BPFUVvuQUFh7'>📍</a></li>
+<li>🍜<a href='https://r.goope.jp/paikutantan'>Paikō TanTan Gonoi</a> <a href='https://maps.app.goo.gl/xxC5kFCL6JSDJpJL9'>📍</a></li>
+<li>🍜Kitakata Shokudō Jinbōchō <a href='https://maps.app.goo.gl/wJCk9zoUbRGe8sTD7'>📍</a></li>
+<li>🍜<a href='http://lanzhou-lamian.com/'>Mǎzilù Lanzhou Beef Noodles</a> <a href='https://maps.app.goo.gl/ppx57ACwzvA464d98'>📍</a></li>
+<li>☕️Koseto <a href='https://maps.app.goo.gl/wBkXXUuiKCYBVP5t6'>📍</a></li>
+<li>☕️​Milonga Nueva <a href='https://maps.app.goo.gl/e9qRLtZFzenhx3EX7'>📍</a></li>
+<li>📚️<a href='http://www.tokyodo-web.co.jp/'>Books Tokyodo Kanda Jinbocho</a> <a href='https://maps.app.goo.gl/nmouwLHf9UYGckph6'>📍</a></li>
+<li>📚️<a href='http://www.book-komiyama.co.jp/'>Komiyama Book Store</a> <a href='https://maps.app.goo.gl/E19Rjj6tkosbZS76A'>📍</a></li>
+<li>📚️<a href='http://www.magnif.jp/'>magnif</a> <a href='https://maps.app.goo.gl/FWJH1YqhZBNsRSyYA'>📍</a></li>
+<li>🎷Jazz BIGBOY <a href='https://maps.app.goo.gl/gxo6bkyCkFi39EGf8'>📍</a></li>
+<li>🎷<a href='https://slwboat.com/'>On a slow boat to ...</a> <a href='https://maps.app.goo.gl/4hW2W9XXpnLjy8n67'>📍</a></li>
+
+</ul>
+<p>🏛️National Museum of Modern Art <a href='https://maps.app.goo.gl/5tTywqyvbBiVKXoi8'>📍</a></p>
+<h2><ruby>新宿<rt>しんじゅく</rt></ruby></h2>
+<p>🏛️<a href='https://yayoikusamamuseum.jp/en/about/museum/'>YAYOI KUSAMA Museum</a> <a href='https://maps.app.goo.gl/tW74DHHHF5o4vW969'>📍</a> ¥1100💴</p>
+<p>🏞️<a href='https://www.env.go.jp/garden/shinjukugyoen/index.html'>Shinjuku Gyoen National Garden</a> <a href='https://maps.app.goo.gl/S7eMBG5VxrQE6z8C6'>📍</a> 🎬️[Kotonoha no Niwa]</p>
+<p>🍻Shinjuku Golden-Gai <a href='https://maps.app.goo.gl/sG78EtgnndVQpZEC6'>📍</a></p>
+<p>📷️Map Camera, Kitamura, Lemon-sha <a href='https://maps.app.goo.gl/VWk4MThbjyD1Z2oz5'>📍</a></p>
+<p>💿️<a href='https://tower.jp/store/Shinjuku'>Tower Records Shinjuku</a> <a href='https://maps.app.goo.gl/robxjrSZeWu7remW9'>📍</a></p>
+<p>☕️Coffee Seibu <a href='https://maps.app.goo.gl/xaqZz7X6MNh7c6x59'>📍</a></p>
+<p>👘<a href='https://www.rakuten.co.jp/fukukimono/'>Recycled Kimono Fuku Fuku</a> <a href='https://maps.app.goo.gl/JXWe3h9pYik5RqVR8'>📍</a></p>
+<p>🍻🏮<a href='https://kabukihall.com/'>Shinjuku Kabuki Hall Yokocho</a> <a href='https://maps.app.goo.gl/UGyX7JjniyWLF7tx6'>📍</a></p>
+<p>🍻🏮<a href='http://shinjuku-omoide.com/'>Omoide Yokocho Memory Lane</a> <a href='https://maps.app.goo.gl/ENqVGYC5pLMAY62Y6'>📍</a></p>
+<p>🍣Kaiten Sushi Numazuko <a href='https://maps.app.goo.gl/L7sXt6k4fuQU2rpKA'>📍</a></p>
+<p>🍣<a href='http://sushitokyo-ten.com/'>Sushi Tokyo Ten</a> <a href='https://maps.app.goo.gl/V8y1ADRo3JGn8xWeA'>📍</a></p>
+<h2><ruby>渋谷<rt>しぶや</rt></ruby></h2>
+<p>🗺️Shibuya Scramble Crossing <a href='https://maps.app.goo.gl/4ZDJ17XR6GPCfx5w7'>📍</a></p>
+<p>💿️Tower Records Shibuya <a href='https://maps.app.goo.gl/RJPcv1qtDhuBAyaQ7'>📍</a></p>
+<p>🏬MEGA Don Quijote <a href='https://maps.app.goo.gl/11KjrD42CpLD5BDm8'>📍</a></p>
+<p>🏬MUJI <a href='https://maps.app.goo.gl/UCy2Je6vJvZJaPi6A'>📍</a></p>
+<p><a href='http://center-gai.jp/'>Shibuya Center-Gai Street</a> <a href='https://maps.app.goo.gl/w47eKX3EPufuoa4K7'>📍</a></p>
+<p>🎎🕹️<a href='https://www.nintendo.co.jp/officialstore/index.html'>Nintendo Tokyo</a> <a href='https://maps.app.goo.gl/ejZC2pUUc4bzPYHv7'>📍</a></p>
+<p>🎻Meikyoku Kissa Lion <a href='https://maps.app.goo.gl/fGii6mVzwqUTCk5F8'>📍</a></p>
+<p>☕️Chatei Hatou <a href='https://maps.app.goo.gl/suZitRJt2d5bN1eD8'>📍</a></p>
+<p>🍻🏮<a href='http://nonbei.tokyo/'>Shibuya Nonbei Yokocho</a> <a href='https://maps.app.goo.gl/bfN6eRRsBe6B7RuMA'>📍</a></p>
+<p>🍣<a href='https://uogashi-nihonichi.imachika.com/store/17'>Uogashi Nihon-Ichi Shibuya Dogenzaka</a> <a href='https://maps.app.goo.gl/yFnTWzHFwUWWetaJ7'>📍</a></p>
+<p>🍣<a href='https://katumidori.co.jp/shop/?id=seibushibuya'>Katsu Seibu</a> <a href='https://maps.app.goo.gl/h2Cu8T5scgryjbNE7'>📍</a></p>
+<p>🎁🎎<a href='https://the-doraemon-store.com/'>THE DORAEMON STORE</a> <a href='https://maps.app.goo.gl/Q2HPyiYt7c3L55dGA'>📍</a></p>
+<p><a href='https://art.parco.jp/'>PARCO MUSEUM TOKYO</a> <a href='https://maps.app.goo.gl/ve3Ah7wKCcNU1jNo8'>📍</a></p>
+<h2><ruby>原宿<rt>はらじゅく</rt></ruby></h2>
+<ul>
+<li><a href='https://www.tokyo-park.or.jp/park/yoyogi/'>Yoyogi Park</a> <a href='https://maps.app.goo.gl/oXTi8GuDkMiS9JvGA'>📍</a></li>
+<li><a href='https://www.meijijingu.or.jp/'>Meiji Jingu</a> <a href='https://maps.app.goo.gl/4wfgjoMojEdtq2pc6'>📍</a></li>
+<li>🧥Sukajyan Dept. <a href='https://maps.app.goo.gl/vrCK1KU8uw1Lt2Tf8'>📍</a></li>
+<li><a href='https://www.takeshita-street.com/'>Takeshita Street</a> <a href='https://maps.app.goo.gl/V52XP6brkwNZegbr9'>📍</a></li>
+<li>☕️Enseigne d&#39;angle Harajuku <a href='https://maps.app.goo.gl/mq4j4gyRh3adKGeP9'>📍</a></li>
+
+</ul>
+<h2><ruby>中野<rt>なかの</rt></ruby></h2>
+<p>🏬Nakano Broadway <a href='https://maps.app.goo.gl/Qz6CuQ7gw3KB6CJr8'>📍</a></p>
+<ul>
+<li>🎎Mandarake Nakano <a href='https://maps.app.goo.gl/ByPHTNLk57M3kh4K7'>📍</a></li>
+<li>🍜Tonpei <a href='https://maps.app.goo.gl/LdNxoxNGdTuQ6qCA9'>📍</a></li>
+
+</ul>
+<p>📷️Fujiya Camera <a href='https://maps.app.goo.gl/ZQLSdnL9Wxe5gbScA'>📍</a></p>
+<p>🍜Chūka-soba Aoba <a href='https://maps.app.goo.gl/HGjJPC3aCdf4t5BA7'>📍</a></p>
+<p>🎷Rompercicci <a href='https://maps.app.goo.gl/JXSrrKrBRiCqcmBo6'>📍</a></p>
+<h2><ruby>秋葉原<rt>あきはばら</rt></ruby></h2>
+<p>🏬<a href='http://www.yodobashi.com/ec/store/0018/index.html'>Yodobashi Akiba</a> <a href='https://maps.app.goo.gl/8WsrGrQ2gRrRaZo36'>📍</a></p>
+<p>🏬<a href='http://en.kotobukiya.co.jp/kotobukiya-akihabara-store-floor-guide/'>AKIHABARA KOTOBUKIYA</a> <a href='https://maps.app.goo.gl/FmKeee2nDnEBXJGv8'>📍</a></p>
+<p>👕<a href='https://junkside.crayonsite.net/'>JUNK SIDE</a> <a href='https://maps.app.goo.gl/uRwC3RVQW5yLUy8t6'>📍</a></p>
+<h2><ruby>中央<rt>ちゅうおう</rt></ruby></h2>
+<p>🏛️<a href='https://tsukijihongwanji.jp/'>Tsukiji Hongan-ji Temple</a> <a href='https://maps.app.goo.gl/JZ3ShXx9ZZVH5K7U6'>📍</a></p>
+<p>🏬🎣<a href='https://www.tsukiji.or.jp/'>Tsukiji Outer Market</a> <a href='https://maps.app.goo.gl/VdVC42Kczs8dfLr4A'>📍</a></p>
+<ul>
+<li>🍣<a href='https://kurogin.co.jp/shop/tsukiji/'>Maguroya Kurogin</a> <a href='https://maps.app.goo.gl/UqLhayxiD4fLjxsj9'>📍</a></li>
+
+</ul>
+<h3><ruby>銀座<rt>ぎんざ</rt></ruby></h3>
+<ul>
+<li><a href='https://www.tokyo-park.or.jp/park/format/index037.html'>Hibiya Park</a> <a href='https://maps.app.goo.gl/4Xa2HCJV21kt2Nnj6'>📍</a></li>
+<li>Chuo-dori Ave. <a href='https://maps.app.goo.gl/dZ3KE9m9W94tNfQo7'>📍</a></li>
+<li>👺🎭️<a href='https://www.kabuki-za.co.jp/'>Kabuki-za</a> <a href='https://maps.app.goo.gl/taVRDHyM4ykyCXvx5'>📍</a></li>
+<li>🍜Ginza Tsukiya <a href='https://maps.app.goo.gl/TopdhGkPZCT1CyqM6'>📍</a></li>
+<li>🏬<a href='https://www.mistore.jp/store/ginza.html'>Mitsukoshi Ginza</a> <a href='https://maps.app.goo.gl/SnsxNezRDiMpCQg59'>📍</a></li>
+<li>🏬<a href='https://map.uniqlo.com/jp/ja/detail/10101397'>UNIQLO</a> <a href='https://maps.app.goo.gl/eN6CgBNCAyyuDQzw9'>📍</a></li>
+<li>🏬<a href='https://www.muji.com/jp/ja/shop/detail/046604?sc_cid=google_map_046604_shop&amp;utm_campaign=046604_shop&amp;utm_medium=map&amp;utm_source=google'>MUJI - Ginza Flagship Store</a> <a href='https://maps.app.goo.gl/9jbfQR64uC7B8gTq8'>📍</a></li>
+<li>📷️<a href='http://www.katsumido-camera.com/'>KATSUMIDO Camera</a> <a href='https://maps.app.goo.gl/uBM2igxEQ45VyK7c9'>📍</a></li>
+
+</ul>
+<h2><ruby>日本橋<rt>にほんばし</rt></ruby></h2>
+<ul>
+<li>🍣🎣<a href='https://www.tsujihan-jp.com/'>Nihonbashi Kaisen Donburi Tsujihan</a> <a href='https://maps.app.goo.gl/g8jTQCGcBumi6oHs8'>📍</a></li>
+
+</ul>
+<h2><ruby>台東<rt>たいとう</rt></ruby></h2>
+<p>🛍️🛣️<a href='http://www.yanakaginza.com/'>Yanaka Ginza</a> <a href='https://maps.app.goo.gl/pm96H6q4Dvo4yqbq8'>📍</a></p>
+<h2><ruby>江東<rt>こうとう</rt></ruby></h2>
+<p>🏞️<a href='https://www.tokyo-park.or.jp/park/kiyosumi/'>Kiyosumi Gardens</a> <a href='https://maps.app.goo.gl/V8WC9ccz3tJ3gqw68'>📍</a></p>
+<p>🏛️<a href='https://www.e-tix.jp/mot/en/'>Museum of Contemporary Art Tokyo</a> <a href='https://maps.app.goo.gl/rcbD3vBp1xrniDZc7'>📍</a> ¥3000💴</p>
+<h2><ruby>港区<rt>みなと</rt></ruby></h2>
+<p>🏛️Odaiba Retro Museum <a href='https://maps.app.goo.gl/VcdjXLeiN5VpNAoB6'>📍</a></p>
+<p><a href='https://www.nezu-muse.or.jp/'>Nezu Museum</a> <a href='https://maps.app.goo.gl/1TQHwagMx45ugamGA'>📍</a></p>
+<p>🎺<a href='http://www.bluenote.co.jp/'>Blue Note Tokyo</a> <a href='https://maps.app.goo.gl/Q71PHfdKHXAn63as8'>📍</a></p>
+<p>🗼<a href='https://www.tokyotower.co.jp/'>Tokyo Tower</a> <a href='https://maps.app.goo.gl/DiYyZqoymdjZ9zEu5'>📍</a></p>
+<h2><ruby>江戸川<rt>えどがわ</rt></ruby></h2>
+<p>🐧<a href='https://www.tokyo-zoo.net/english/kasai/index.html'>Tokyo Sea Life Park</a> <a href='https://maps.app.goo.gl/Yrdb7YkhewixUufq9'>📍</a> ¥700💴</p>
+<h2><ruby>千葉<rt>ちば</rt></ruby></h2>
+<p>🎡<a href='https://www.tokyodisneyresort.jp/en/tdl.html'>Tokyo Disneyland</a> <a href='https://maps.app.goo.gl/Az1GKAyKBgAMGxQf6'>📍</a> ¥7900～10900💴</p>
+<h2><ruby>三鷹<rt>みたか</rt></ruby></h2>
+<p>🏛️<a href='https://www.ghibli-museum.jp/'>Ghibli Museum</a> <a href='https://maps.app.goo.gl/WzmrLQ7SPpnrpTEV7'>📍</a> ¥1000💴</p>
+<h2><ruby>町田<rt>まちだ</rt></ruby></h2>
+<p>🏛️<a href='https://snoopymuseum.tokyo/s/smt/page/english'>Snoopy Museum Tokyo</a> <a href='https://maps.app.goo.gl/24FeZbshd4jcEF7a8'>📍</a> ¥1800～2000💴</p>
+<h2><ruby>品川<rt>しながわ</rt></ruby></h2>
+<p>🏬Tokyo City Flea Market</p>
+<p>🛍️🛣️<a href='http://www.musashikoyama-palm.jp/'>Musashi-Koyama Shopping Street “Palm”</a> <a href='https://maps.app.goo.gl/bastbycWRLR5edUM7'>📍</a></p>
+<p>&nbsp;</p>
+<hr />
+<h1 id='東京の近く'>東京の近く</h1>
+<h2><ruby>日光<rt>にっこう</rt></ruby></h2>
+<blockquote><p>🚉Asakusa Station ⇒ Tobu-Nikko Station ¥3050💴</p>
+</blockquote>
+<p>🏯<a href='https://www.toshogu.jp/'>Nikkō Tōshogū</a> <a href='https://maps.app.goo.gl/bQTS8pdihq8dSoQt7'>📍</a> ¥1300💴</p>
+<p>🏯Nikkozan Rin’nōji Temple <a href='https://maps.app.goo.gl/7QVyBAvQoVGs7ZtY7'>📍</a> ¥400💴</p>
+<p>🌉Shinkyō Bridge <a href='https://maps.app.goo.gl/JCeo8KP8tXEcy4326'>📍</a> ¥300💴</p>
+<p>🏞️🌊Kegon Waterfalls <a href='https://maps.app.goo.gl/toCfBiZBs7MBm3Cx6'>📍</a></p>
+<h2><ruby>鎌倉<rt>かまくら</rt></ruby></h2>
+<blockquote><p>🚉Shinjuku Station ⇒ Fujisawa Station</p>
+<p>🚉Enoden: Fujisawa Station ⇒ Enoshima Station ¥310💴 (Noriorikun 1 Day Pass for ¥800)</p>
+</blockquote>
+<p>🚉Kamakurakōkō-Mae Station <a href='https://maps.app.goo.gl/iBjRwje7PLustRFJ9'>📍</a> 🎬️[Slam Dunk]</p>
+<p>🕉️<a href='https://www.kotoku-in.jp/'>Kotoku-in Big Buddha</a> <a href='https://maps.app.goo.gl/wB7efuK3FyZ5Cyf18'>📍</a></p>
+<p>🏯<a href='https://www.hasedera.jp/'>Hasedera Temple</a> <a href='https://maps.app.goo.gl/mNbm9KXTmPGKaBca6'>📍</a></p>
+<p>⛩️<a href='https://www.hachimangu.or.jp/'>Tsurugaoka Hachimangu</a> <a href='https://maps.app.goo.gl/PT1gWVj4dZ9rgQfYA'>📍</a></p>
+<p>🍵👘<a href='https://osaragijiro.jp/'>Jiro Osaragi Teahouse</a> <a href='https://maps.app.goo.gl/yFtEsSHvrTGce2fo9'>📍</a> Weekends only</p>
+<p>🛍️🛣️Komachi Street <a href='https://maps.app.goo.gl/RphoV7q52ZBkCLDh8'>📍</a></p>
+<p>🍵🥛<a href='https://instagram.com/8108kamakura?igshid=OGQ5ZDc2ODk2ZA=='>Hatoya Kamakura</a> <a href='https://maps.app.goo.gl/bA8Vcz1bBUA9dr2e8'>📍</a></p>
+<p>🍽️☕️<a href='http://yoridocoro.com/'>yoridokoro</a> <a href='https://maps.app.goo.gl/HfJnbMpNxEvti96u8'>📍</a></p>
+<p>🏯🌿<a href='http://www.houkokuji.or.jp/'>Houkokuji</a> <a href='https://maps.app.goo.gl/DPJ75rP6kxYut2n29'>📍</a></p>
+<p>⛩️⛩️⛩️<a href='http://sasukeinari.jp/'>Sasuke Inari Shrine</a> <a href='https://maps.app.goo.gl/LDqj3hoTpX3KPtpSA'>📍</a></p>
+<hr />
+<h1 id='京都'>京都</h1>
+<blockquote><p>🚅Nozomi Shinkansen: Tokyo ⇒ Kyoto ¥14170💴 2:10⏲️</p>
+<p>🏨Stay in: Gion</p>
+</blockquote>
+<h2><ruby>中京<rt>なかぎょう</rt></ruby></h2>
+<p>🏛️The Museum of Kyoto <a href='https://maps.app.goo.gl/EHFQ7vMbZy8Yvkau7'>📍</a></p>
+<p>🏛️Kyoto International Manga Museum <a href='https://maps.app.goo.gl/HGBHzAso57QnVkqz9'>📍</a></p>
+<p>🏬Nishiki Market <a href='https://maps.app.goo.gl/RKWxRS6aNKcqXFVs8'>📍</a></p>
+<p>🛣️Pontocho Alley <a href='https://maps.app.goo.gl/agpP7Kc7nBAcC9A47'>📍</a></p>
+<ul>
+<li>🥩Yakiniku Hiro <a href='https://maps.app.goo.gl/anwBe6nLGqrMDiFG9'>📍</a></li>
+
+</ul>
+<p>👘Harajuku Chicago <a href='https://maps.app.goo.gl/fp9CwKb4RWA3ug729'>📍</a></p>
+<p>👘Mimuro <a href='https://maps.app.goo.gl/GCjf9otvCA5jbQkz9'>📍</a></p>
+<p>🥩Steak &amp; Wine <a href='https://maps.app.goo.gl/Ck2n3vMbBNryeMBm7'>📍</a></p>
+<p>🍜Ramen Sen-no-Kaze <a href='https://maps.app.goo.gl/t8ePWUL4UTZ58MT9A'>📍</a></p>
+<h2><ruby>東山区<rt>ひがしやま</rt></ruby></h2>
+<p>🛣️Hanami-koji Street <a href='https://maps.app.goo.gl/VNmYbhnxEjyzvgmW9'>📍</a></p>
+<p>⛩️Yasaka Shrine <a href='https://maps.app.goo.gl/Qfj3HWwQD6PbqPt98'>📍</a></p>
+<p>🏛️Gion Kagai Art Museum <a href='https://maps.app.goo.gl/MYsV5GFLVNL1vbUx9'>📍</a></p>
+<p>☕️🍡Kagizen Yoshifusa Kodaiji <a href='https://maps.app.goo.gl/8fLtauFwXato3NdU9'>📍</a></p>
+<p>☕️🍡Kagizen Yoshifusa Shijo (Main) <a href='https://maps.app.goo.gl/Af7HdQGLR95mZzoZA'>📍</a></p>
+<p>🏯Hōkan-ji (Yasaka Pagoda) <a href='https://maps.app.goo.gl/iR9hSNbsKQTbCavTA'>📍</a></p>
+<p>🏯🌿<a href='https://www.kodaiji.com/'>Kōdaiji Temple</a> <a href='https://maps.app.goo.gl/kzdiXyfcZ1KzmCxx8'>📍</a></p>
+<p>🛣️Ninenzaka <a href='https://maps.app.goo.gl/CLgL1wgPu3SjQQgs5'>📍</a></p>
+<p>🛣️Sannenzaka <a href='https://maps.app.goo.gl/aqvNBzirZxaLR3AZ9'>📍</a></p>
+<p>🏯Kiyomizudera <a href='https://maps.app.goo.gl/VRWze3kdRXUA8Fyt6'>📍</a></p>
+<h2><ruby>左京<rt>さきょう</rt></ruby></h2>
+<p>🏯Nanzenji Temple <a href='https://maps.app.goo.gl/hC2YBd2XFZBTAidv7'>📍</a></p>
+<p>🏯Eikando Temple <a href='https://maps.app.goo.gl/2Mp1bZkWxDSQ1GHQ6'>📍</a></p>
+<p>⛩️🐇<a href='https://www.japan-experience.com/all-about-japan/kyoto/temples-shrines/okazaki'>Okazaki Shrine</a> <a href='https://maps.app.goo.gl/iAKzv85U9CLX6ihr5'>📍</a> 🈚️</p>
+<p>🏯🍀<a href='https://souda-kyoto.jp/guide/spot/nanzenji-tenjuan.html'>Tenjuan Temple</a> <a href='https://maps.app.goo.gl/ECFTghAcAxDs9wBy8'>📍</a> ¥500💴</p>
+<h2><ruby>嵐山<rt>あらしやま</rt></ruby></h2>
+<p>🌿🌲Arashiyama Bamboo Forest <a href='https://maps.app.goo.gl/YGCLSotjCDBB8rwp8'>📍</a> 🈚️</p>
+<p>🌿🌲<a href='https://nenbutsuji.jp/eng/'>Adashino Nenbutsuji Temple</a> <a href='https://maps.app.goo.gl/NaFvD1DxfUCfRvzT9'>📍</a> ¥500💴 9:00〜16:30🕗️</p>
+<p>⛩️🗿<a href='http://www.otagiji.com/'>Otagi Nenbutsuji Temple</a> <a href='https://maps.app.goo.gl/ijqBZK6zmSXBt4WT7'>📍</a> ¥500💴</p>
+<p>🏯Tenryuji <a href='https://maps.app.goo.gl/q8N99KniSFHCzmiB6'>📍</a></p>
+<p>🏯Daihikaku Senkō-ji <a href='https://maps.app.goo.gl/MtDrSkjpWo4oojf89'>📍</a></p>
+<p>🏞️🐒<a href='http://www.monkeypark.jp/eng-index.html'>Iwatayama Monkey Park</a> <a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6'>📍</a> ¥800💴</p>
+<p>🛤️<a href='https://ars-saganokanko.triplabo.jp/home'>Sagano Romantic Train</a> <a href='https://maps.app.goo.gl/YmHj9n6kiJ7UmD6F6'>📍</a> ¥880～💴</p>
+<p>⛵️<a href='https://translation2.j-server.com/LUCHZGWK/ns/tl.cgi/https://www.hozugawakudari.jp/tickets?SLANG=ja&amp;TLANG=en&amp;XMODE=0&amp;XCHARSET=UTF-8&amp;XJSID=0'>Hozugawa River Boat Ride</a> <a href='https://maps.app.goo.gl/rPwk1cme9hrr5fCQ7'>📍</a> ¥6000💴</p>
+<h2><ruby>上京<rt>かみぎょう</rt></ruby></h2>
+<p>🏞️<a href='https://kyotogyoen.go.jp/'>Kyoto Gyoen National Garden</a> <a href='https://maps.app.goo.gl/mHWuCU3g8AQSJfZX9'>📍</a></p>
+<h2 id='northwest'>Northwest</h2>
+<blockquote><p>🚉Eizan Railway: <a href='https://maps.app.goo.gl/v6ZG2V39k5TsQMsE8'>Demachiyanagi Station</a> ⇒ <a href='https://maps.app.goo.gl/qT88eRY2v8PsxKDRA'>Kibuneguchi Station</a></p>
+</blockquote>
+<p>🏯<a href='https://www.shokoku-ji.jp/kinkakuji/'>Kinkaku-ji</a> <a href='https://maps.app.goo.gl/8MKR2zWwte8sjb1h7'>📍</a> ¥500💴</p>
+<p>🏯<a href='http://www.daikakuji.or.jp/'>Daikaku-ji Temple</a> <a href='https://maps.app.goo.gl/PUthVBEz8GfbiUdY9'>📍</a></p>
+<p>🌲Kurama to Kibune Hike <a href='https://maps.app.goo.gl/udEXsaEYhZPXCYav5'>📍</a> 2-3 hs⏲️</p>
+<ul>
+<li>🚉Kibuneguchi Station <a href='https://maps.app.goo.gl/GfrFPJ81Ag22sLKX6'>📍</a></li>
+
+</ul>
+<p>🏞️<a href='http://www.pref.kyoto.jp/plant/'>Kyoto Botanic Garden</a> <a href='https://maps.app.goo.gl/haDPXZTKe69eMtxXA'>📍</a></p>
+<h2 id='south'>South</h2>
+<p>⛩️⛩️⛩️<a href='https://inari.jp/'>Fushimi Inari</a> <a href='https://maps.app.goo.gl/PVyhyuG3ZHxiZTML8'>📍</a></p>
+<hr />
+<h1 id='大阪'>大阪</h1>
+<blockquote><p>🚅Nozomi Shinkansen: Tokyo ⇒ Shin-Osaka ¥14720💴</p>
+<p>🏨Stay in: Namba</p>
+</blockquote>
+<h2><ruby>中央<rt>ちゅうおう</rt></ruby></h2>
+<p>🏯<a href='https://osakacastle.org/'>Osaka Castle</a> <a href='https://maps.app.goo.gl/ETgWfQ2CqoTysCvd6'>📍</a></p>
+<p>🏬🛣️<a href='http://www.dotonbori.or.jp/ja/'>Dotonbori</a> <a href='https://maps.app.goo.gl/cQEyMkMrqvXAZRQV6'>📍</a></p>
+<ul>
+<li>🎡<a href='https://www.donki.com/kanransha/'>Ebisu Tower Ferris Wheel (Don Quijote)</a> <a href='https://maps.app.goo.gl/3mgCVHHdfWXdSwNE9'>📍</a> ¥1000💴</li>
+
+</ul>
+<p>🏬🛣️<a href='https://kuromon.com/jp/'>Kuromon Market</a> <a href='https://maps.app.goo.gl/Dhs3kbhwcFkDyE8q6'>📍</a></p>
+<p>🏬PLAZA Shinsaibashi PARCO Store <a href='https://maps.app.goo.gl/YV7CqS8rSeGF2aTy7'>📍</a></p>
+<ul>
+<li>🐉Donguri Kyowakoku (Ghibli Store), 6th floor <a href='https://maps.app.goo.gl/VUEKFBkGSkSUNSgh9'>📍</a></li>
+
+</ul>
+<p>🏬🗽<a href='https://osaka-info.jp/spot/america-mura-american-village/'>Amerika Mura</a> <a href='https://maps.app.goo.gl/4s9tWztpTKzbUTs37'>📍</a></p>
+<p>🏬🛣️<a href='https://www.nippombashi.jp/'>Nipponbashi Denden Town</a> <a href='https://maps.app.goo.gl/8Wrj24GjHPXEXDK98'>📍</a></p>
+<p>🛍️🛣️Sennichimae Doguyasuji Shopping Street for cookware <a href='https://maps.app.goo.gl/KCGFDaJigrYJ7s817'>📍</a></p>
+<p>🎎Torejaras <a href='https://maps.app.goo.gl/yhJxgWkUm2v8V9sF6'>📍</a></p>
+<p>🐉Donguri Kyowakoku (Ghibli Store) Namba <a href='https://maps.app.goo.gl/WtPKuXRnnjYBRfkNA'>📍</a></p>
+<h2><ruby>北区<rt>きたく</rt></ruby></h2>
+<p>🛍️🛣️<a href='https://www.tenjin123.com/'>Tenjinbashi-suji Shopping Street</a> <a href='https://maps.app.goo.gl/A96no8K8sBNFMZ2QA'>📍</a></p>
+<p>🎻The Symphony Hall <a href='https://maps.app.goo.gl/khgsuf4s6ahevXSAA'>📍</a></p>
+<p>🐉Donguri Kyowakoku (Ghibli Store) <a href='https://maps.app.goo.gl/a8NUCjg8YUWoazSN6'>📍</a></p>
+<p>👕Kinji Used Clothing <a href='https://maps.app.goo.gl/QfyL8GfGKnnuMgh4A'>📍</a></p>
+<h2 id='north'>North</h2>
+<p>🏛️<a href='https://www.city.takarazuka.hyogo.jp/tezuka/'>The Osamu Tezuka Manga Museum</a> <a href='https://maps.app.goo.gl/h6iR9CyxNTWmpLoDA'>📍</a> ¥700💴</p>
+<p>🏛️<a href='https://www.cupnoodles-museum.jp/en/osaka_ikeda/'>Cup Noodles Museum Osaka Ikeda</a> <a href='https://maps.app.goo.gl/ppJCY6rNGEob6AKa6'>📍</a> 🈚️</p>
+<p>🗺️​☀️​<a href='http://taiyounotou-expo70.jp/'>Tower of the Sun</a> <a href='https://maps.app.goo.gl/mgNkHjVF5SYPvkt26'>📍</a></p>
+<h2 id='south-2'>South</h2>
+<p>🏬🛣️<a href='https://shinsekaiofficial.com/'>Shinsekai</a> <a href='https://maps.app.goo.gl/JBERNwhUkhNribEo9'>📍</a></p>
+<hr />
+<h1 id='大阪の近く'>大阪の近く</h1>
+<h2><ruby>奈良<rt>なら</rt></ruby></h2>
+<blockquote><p>🚉Osaka-Namba Station ⇒ Kintetsu-Nara Station</p>
+<p>🚄<a href='https://www.kintetsu.co.jp/foreign/english/aoniyoshi/'>Aoniyoshi Limited Express</a> ¥1410💴</p>
+</blockquote>
+<p>🏞️🦌<a href='https://www.visitnara.jp/destinations/area/nara-park/'>Nara Park</a> <a href='https://maps.app.goo.gl/oQnj8FTKGiriZUtq9'>📍</a> 🈚️</p>
+<p>🏯Tōdai-ji <a href='https://maps.app.goo.gl/fnBLhmbJj2xRGfcc8'>📍</a></p>
+<p>⛩️<a href='https://www.kasugataisha.or.jp/'>Kasugataisha Shrine</a> <a href='https://maps.app.goo.gl/D6SbGur8QrPc9zhn8'>📍</a></p>
+<p>🛍️🏬Higashimuki Shopping Street <a href='https://maps.app.goo.gl/nMzWSWm9nvFG2FSU7'>📍</a></p>
+<p>🛍️🏬Mochiidonocho Shopping Street <a href='https://maps.app.goo.gl/SXJTVNfKKUzSTMoi7'>📍</a></p>
+<p>🍽️🐟️Maguro Koya <a href='https://maps.app.goo.gl/4nigqCWMJEW57SJv5'>📍</a></p>
+<p>🍡Nakatanidou <a href='https://maps.app.goo.gl/3szMmL7y2frtXDFV9'>📍</a></p>
+<h2><ruby>姫路<rt>ひめじ</rt></ruby></h2>
+<p>🏯<a href='https://www.city.himeji.lg.jp/castle/index.html'>Himeji Castle</a> <a href='https://maps.app.goo.gl/XGvea8gZgvLMFiGn8'>📍</a></p>
+<hr />
+<h1><ruby>名古屋<rt>なごや</rt></ruby></h1>
+<blockquote><p>🚉Higashiyama Line: Nagoya Station ⇒ Ghibli Park 1:00</p>
+</blockquote>
+<p>🎡<a href='https://ghibli-park.jp/en/'>Ghibli Park</a> <a href='https://maps.app.goo.gl/awbyRNjhjCER369r9'>📍</a> ¥3300～7800💴</p>
+<p>🏯<a href='https://www.nagoyajo.city.nagoya.jp/'>Nagoya Castle</a> <a href='https://maps.app.goo.gl/MV2ow112AC6A3zoB9'>📍</a> ¥500💴 9:00〜16:30🕗️</p>
+<p>🏛️Nagoya City Art Museum <a href='https://maps.app.goo.gl/E18W9MTM2BAxUm1L9'>📍</a></p>
+<p>🛍️🛣️Osu Shotengai Shopping Street <a href='https://maps.app.goo.gl/LJ6TH1BEHkGF2BPLA'>📍</a></p>
+<p>🏞️Yōkisō <a href='https://maps.app.goo.gl/TsWtMGMB6sWsixZJA'>📍</a></p>
+<p>🏯Nittai-ji <a href='https://maps.app.goo.gl/ALaHydTjyZTNDGXp8'>📍</a></p>
+<p>⛩️<a href='https://www.atsutajingu.or.jp/'>Atsuta-jingu Shrine</a> <a href='https://maps.app.goo.gl/pgvzqk1pAnRnBJ5M9'>📍</a></p>
+<p>🏛️🚄<a href='http://museum.jr-central.co.jp/'>SCMaglev and Railway Park</a> <a href='https://maps.app.goo.gl/BpPdooN5NuipXbm89'>📍</a></p>
+<hr />
+<h1><ruby>岐阜<rt>ぎふ</rt></ruby></h1>
+<h2><ruby>高山<rt>たかやま</rt></ruby></h2>
+<p><a href='https://hidanosato.com/'>Hida no Sato Folk Village Museum</a> <a href='https://maps.app.goo.gl/Qwe3mmcuVnf9DtaaA'>📍</a></p>
+<h2><ruby>飛騨<rt>ひだ</rt></ruby></h2>
+<h2><ruby>白川<rt>しらかわ</rt></ruby></h2>
+<p><a href='http://www.hidatakayama.ne.jp/taguchiya/index.html'>Taguchiya Shop</a> <a href='https://maps.app.goo.gl/cQ38567eDTzPWHJa8'>📍</a></p>
+<hr />
+<h1><ruby>箱根<rt>はこね</rt></ruby></h1>
+<blockquote><p>🚅Shinkansen: Kyoto/Osaka ⇒ Odawara 2:00</p>
+<p>Odakyu Line: Odawara Station ⇒ Hakone ¥250～¥330💴 14min⏲️</p>
+<p>Limited Express Romancecar: Hakone ⇒ Tokyo ¥1200💴 1:20⏲️</p>
+</blockquote>
+<p>🗻♨️</p>
+<hr />
+<h1 id='チェーンストア'>チェーンストア</h1>
+<p>🥓Torikizoku: Yakitori <a href='https://maps.app.goo.gl/c9YUbshVZ4uB6CT66'>📍</a></p>
+<p>🍜Kineya: Udon Noodles <a href='https://maps.app.goo.gl/7A3eBhFp77c2viEx8'>📍</a></p>
+<p>🍣Sushiro: Sushi <a href='https://maps.app.goo.gl/f9xiBLAUv8SJDgs88'>📍</a></p>
+<p>🍜ICHIRAN: Tonkotsu Ramen <a href='https://maps.app.goo.gl/XmUr7DH1MAEDF6pa9'>📍</a></p>
+<p>🍲Yoshinoya: Gyudon <a href='https://maps.app.goo.gl/iKemuSYW9iuYJaFN7'>📍</a></p>
+<p>🍚Katsuya: Fast Food <a href='https://maps.app.goo.gl/eGdL6W8N3F1a3K6CA'>📍</a></p>
 </body>
 </html>
