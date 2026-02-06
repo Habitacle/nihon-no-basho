@@ -59,7 +59,7 @@ html {
 /* Main content */
 
 .main {
-    max-width: 72ch;
+    max-width: 100ch;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -93,7 +93,7 @@ blockquote {
     position: sticky;
     top: 0;
     height: 100vh;
-    width: 220px;
+    width: 150px;
     padding: 1rem;
     border-right: 1px solid #e6dcdc;
     overflow-y: auto;
@@ -116,53 +116,4 @@ blockquote {
     background: var(--color-code-bg);
     color: var(--color-accent);
     font-weight: 600;
-}
-/* Toggle button */
-
-#toc-toggle {
-    display: none;
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    border: none;
-    background: var(--color-accent);
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-/* Mobile behavior */
-
-@media (max-width: 900px) {
-    body {
-        display: block;
-    }
-
-    #toc-toggle {
-        display: block;
-    }
-
-    #sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 260px;
-        height: 100vh;
-        transform: translateX(-100%);
-        transition: transform 0.25s ease;
-        z-index: 999;
-        background: var(--color-background);
-        box-shadow: 2px 0 10px rgba(0,0,0,0.15);
-    }
-
-    body.toc-open #sidebar {
-        transform: translateX(0);
-    }
-
-    .main {
-        padding-top: 4rem;
-    }
 }

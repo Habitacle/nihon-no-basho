@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>場所</title>
         <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
 </head>
 <body>
-    <button id="toc-toggle" aria-label="Toggle document outline">
-        ☰
-    </button>
     <aside id="sidebar">
         <nav id="toc"></nav>
     </aside>
@@ -802,18 +800,5 @@
     
     /* Initial highlight */
     updateActiveFromScroll();
-    const toggle = document.getElementById("toc-toggle");
-    
-    toggle.addEventListener("click", () => {
-        document.body.classList.toggle("toc-open");
-    });
-    
-    /* Close sidebar after selecting a heading (mobile) */
-    toc.addEventListener("click", e => {
-        if (e.target.tagName === "A") {
-            document.body.classList.remove("toc-open");
-        }
-    });
-
 </script>
 </html>
