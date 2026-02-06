@@ -6,6 +6,9 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
+    <button id="toc-toggle" aria-label="Toggle document outline">
+        ☰
+    </button>
     <aside id="sidebar">
         <nav id="toc"></nav>
     </aside>
@@ -799,5 +802,18 @@
     
     /* Initial highlight */
     updateActiveFromScroll();
+    const toggle = document.getElementById("toc-toggle");
+    
+    toggle.addEventListener("click", () => {
+        document.body.classList.toggle("toc-open");
+    });
+    
+    /* Close sidebar after selecting a heading (mobile) */
+    toc.addEventListener("click", e => {
+        if (e.target.tagName === "A") {
+            document.body.classList.remove("toc-open");
+        }
+    });
+
 </script>
 </html>
